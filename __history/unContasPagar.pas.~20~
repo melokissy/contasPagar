@@ -1,0 +1,66 @@
+unit unContasPagar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.ToolWin, Vcl.ComCtrls,
+  System.Actions, Vcl.ActnList, Vcl.Menus, System.ImageList, Vcl.ImgList,
+  Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  TfrmPrincipal = class(TForm)
+    ActionList1: TActionList;
+    MainMenu1: TMainMenu;
+    Cadastro1: TMenuItem;
+    CadastrodeUsurios1: TMenuItem;
+    CadastrodeUsurios2: TMenuItem;
+    N1: TMenuItem;
+    CadastrodeUsurios3: TMenuItem;
+    actCEP1: TMenuItem;
+    ImageList1: TImageList;
+    actBancos: TAction;
+    actClientes: TAction;
+    actUsuarios: TAction;
+    actCEP: TAction;
+    StatusBar1: TStatusBar;
+    Baixa1: TMenuItem;
+    Saldo1: TMenuItem;
+    procedure actBancosExecute(Sender: TObject);
+    procedure actClientesExecute(Sender: TObject);
+    procedure actUsuariosExecute(Sender: TObject);
+    procedure actCEPExecute(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmPrincipal.actBancosExecute(Sender: TObject);
+begin
+  ShowMessage('TESTE BANCO');
+end;
+
+procedure TfrmPrincipal.actCEPExecute(Sender: TObject);
+begin
+  ShowMessage('TESTE CEP');
+end;
+
+procedure TfrmPrincipal.actClientesExecute(Sender: TObject);
+begin
+  ShowMessage('TESTE CLIENTE');
+end;
+
+procedure TfrmPrincipal.actUsuariosExecute(Sender: TObject);
+begin
+  ShowMessage('TESTE USUARIOS');
+end;
+
+end.
