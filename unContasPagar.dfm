@@ -12,6 +12,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
+  Position = poOwnerFormCenter
   WindowState = wsMaximized
   PixelsPerInch = 96
   TextHeight = 13
@@ -29,8 +30,6 @@ object frmPrincipal: TfrmPrincipal
         Text = 'Usu'#225'rio: '
         Width = 50
       end>
-    ExplicitTop = 599
-    ExplicitWidth = 1054
   end
   object Panel1: TPanel
     Left = 0
@@ -41,13 +40,9 @@ object frmPrincipal: TfrmPrincipal
     Color = clWindow
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = 552
-    ExplicitTop = 352
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object btnBanco: TSpeedButton
-      Left = 136
-      Top = 232
+      Left = 144
+      Top = 240
       Width = 233
       Height = 153
       Action = actBancos
@@ -1163,8 +1158,8 @@ object frmPrincipal: TfrmPrincipal
         FFFF}
     end
     object btnCliente: TSpeedButton
-      Left = 424
-      Top = 232
+      Left = 432
+      Top = 240
       Width = 233
       Height = 153
       Action = actClientes
@@ -2270,8 +2265,8 @@ object frmPrincipal: TfrmPrincipal
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     end
     object btnUsuario: TSpeedButton
-      Left = 704
-      Top = 232
+      Left = 712
+      Top = 240
       Width = 233
       Height = 153
       Action = actBaixa
@@ -3368,8 +3363,8 @@ object frmPrincipal: TfrmPrincipal
         FFFFFFFFFFFFFFFFFFFF}
     end
     object Label1: TLabel
-      Left = 136
-      Top = 192
+      Left = 144
+      Top = 200
       Width = 99
       Height = 19
       Caption = 'Acesso r'#225'pido'
@@ -3381,8 +3376,8 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
     end
     object SpeedButton1: TSpeedButton
-      Left = 984
-      Top = 232
+      Left = 992
+      Top = 240
       Width = 233
       Height = 153
       Action = actSaldo

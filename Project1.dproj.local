@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2022/07/06 16:54:56.162,=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2022/07/06 16:55:27.462,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas a pagar\unContasPagar.dfm=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2022/07/06 16:55:27.462,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas a pagar\unContasPagar.pas=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2022/07/06 16:55:30.872,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas a pagar\Project1.dproj=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+	<Transactions>
+    <Transaction>2022/07/06 16:54:56.000.162,=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/07/06 16:55:27.000.462,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas a pagar\unContasPagar.dfm=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2022/07/06 16:55:27.000.462,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas a pagar\unContasPagar.pas=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/07/06 16:55:30.000.872,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas a pagar\Project1.dproj=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
   </Transactions>
 </BorlandProject>
