@@ -41,10 +41,10 @@ object frmPrincipal: TfrmPrincipal
     ParentBackground = False
     TabOrder = 1
     object btnBanco: TSpeedButton
-      Left = 144
+      Left = 176
       Top = 240
-      Width = 233
-      Height = 153
+      Width = 209
+      Height = 137
       Action = actBancos
       Glyph.Data = {
         7E8A0000424D7E8A000000000000360000002800000064000000760000000100
@@ -1158,10 +1158,10 @@ object frmPrincipal: TfrmPrincipal
         FFFF}
     end
     object btnCliente: TSpeedButton
-      Left = 432
+      Left = 440
       Top = 240
-      Width = 233
-      Height = 153
+      Width = 209
+      Height = 137
       Action = actClientes
       Glyph.Data = {
         52890000424D5289000000000000360000002800000064000000750000000100
@@ -2265,10 +2265,10 @@ object frmPrincipal: TfrmPrincipal
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     end
     object btnUsuario: TSpeedButton
-      Left = 712
+      Left = 696
       Top = 240
-      Width = 233
-      Height = 153
+      Width = 209
+      Height = 137
       Action = actBaixa
       Glyph.Data = {
         26880000424D2688000000000000360000002800000064000000740000000100
@@ -3363,7 +3363,7 @@ object frmPrincipal: TfrmPrincipal
         FFFFFFFFFFFFFFFFFFFF}
     end
     object Label1: TLabel
-      Left = 144
+      Left = 176
       Top = 200
       Width = 99
       Height = 19
@@ -3376,10 +3376,10 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
     end
     object SpeedButton1: TSpeedButton
-      Left = 992
+      Left = 960
       Top = 240
-      Width = 233
-      Height = 153
+      Width = 209
+      Height = 137
       Action = actSaldo
       Glyph.Data = {
         FA860000424DFA86000000000000360000002800000064000000730000000100

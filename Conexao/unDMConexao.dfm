@@ -18,12 +18,12 @@ object dmConexao: TdmConexao
     Params.Strings = (
       
         'Database=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Co' +
-        'ntas_pagar\DB\CONTASDB.FDB'
+        'ntas_pagar\DB\PAGAMENTO.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Server=localhost'
       'Port=3050'
-      'CharacterSet=ISO8859_2'
+      'CharacterSet=ISO8859_1'
       'DriverID=fbDriverLink')
     Left = 56
     Top = 72
