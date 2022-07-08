@@ -41,7 +41,7 @@ begin
   fdConnection.Params.DriverID:='fbDriverLink';
   fdConnection.Params.Add('Server=127.0.0.1');
   fdConnection.Params.Add('Porta=3050');
-  fdConnection.Params.Database:='C:\Users\kkkkk\Documents\DB\DBCURSO.FDB';
+  fdConnection.Params.Database:='C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\DB\DBCURSO.FDB';
   fdConnection.Params.UserName:='SYSDBA';
   fdConnection.Params.Password:='masterkey';
   fdConnection.Params.Add('CharacterSet=ISO8859_2');

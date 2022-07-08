@@ -16,7 +16,9 @@ object dmConexao: TdmConexao
   object fdConnection: TFDConnection
     ConnectionName = 'ConexaoDB'
     Params.Strings = (
-      'Database=C:\Users\kkkkk\Documents\DB\CONTASDB.FDB'
+      
+        'Database=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Co' +
+        'ntas_pagar\DB\CONTASDB.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Server=localhost'
