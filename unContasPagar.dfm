@@ -2,8 +2,8 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Sistema de Controle de Contas a Pagar'
-  ClientHeight = 751
-  ClientWidth = 1356
+  ClientHeight = 646
+  ClientWidth = 1209
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,8 +18,8 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 13
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 732
-    Width = 1356
+    Top = 627
+    Width = 1209
     Height = 19
     Panels = <
       item
@@ -34,15 +34,15 @@ object frmPrincipal: TfrmPrincipal
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1356
-    Height = 732
+    Width = 1209
+    Height = 627
     Align = alClient
     Color = clWindow
     ParentBackground = False
     TabOrder = 1
     object btnBanco: TSpeedButton
-      Left = 176
-      Top = 240
+      Left = 152
+      Top = 224
       Width = 209
       Height = 137
       Action = actBancos
@@ -1158,8 +1158,8 @@ object frmPrincipal: TfrmPrincipal
         FFFF}
     end
     object btnCliente: TSpeedButton
-      Left = 440
-      Top = 240
+      Left = 416
+      Top = 224
       Width = 209
       Height = 137
       Action = actClientes
@@ -2265,8 +2265,8 @@ object frmPrincipal: TfrmPrincipal
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     end
     object btnUsuario: TSpeedButton
-      Left = 696
-      Top = 240
+      Left = 672
+      Top = 224
       Width = 209
       Height = 137
       Action = actBaixa
@@ -3363,8 +3363,8 @@ object frmPrincipal: TfrmPrincipal
         FFFFFFFFFFFFFFFFFFFF}
     end
     object Label1: TLabel
-      Left = 176
-      Top = 200
+      Left = 152
+      Top = 184
       Width = 99
       Height = 19
       Caption = 'Acesso r'#225'pido'
@@ -3376,8 +3376,8 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
     end
     object SpeedButton1: TSpeedButton
-      Left = 960
-      Top = 240
+      Left = 936
+      Top = 224
       Width = 209
       Height = 137
       Action = actSaldo
@@ -4465,7 +4465,7 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object ActionList1: TActionList
-    Left = 1120
+    Left = 1008
     Top = 16
     object actBancos: TAction
       ImageIndex = 3
@@ -4491,7 +4491,7 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object MainMenu1: TMainMenu
-    Left = 1208
+    Left = 1096
     Top = 16
     object Cadastro1: TMenuItem
       Caption = 'Cadastro'

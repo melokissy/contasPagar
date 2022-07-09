@@ -54,6 +54,8 @@ implementation
 
 {$R *.dfm}
 
+uses unUsuarioView;
+
 procedure TfrmPrincipal.actBaixaExecute(Sender: TObject);
 begin
   ShowMessage('TELA DE BAIXA');
@@ -62,6 +64,8 @@ end;
 procedure TfrmPrincipal.actBancosExecute(Sender: TObject);
 begin
   ShowMessage('TESTE BANCO');
+  //Application.CreateForm(TfrmPadrao, frmPadrao);
+  //frmPadrao.ShowModal;
 end;
 
 procedure TfrmPrincipal.actCEPExecute(Sender: TObject);
@@ -81,7 +85,9 @@ end;
 
 procedure TfrmPrincipal.actUsuariosExecute(Sender: TObject);
 begin
-  ShowMessage('TESTE USUARIOS');
+  //ShowMessage('TESTE USUARIOS');
+  Application.CreateForm(TfrmUsuarios, frmUsuarios);
+  frmUsuarios.ShowModal;
 end;
 
 procedure TfrmPrincipal.Sair1Click(Sender: TObject);

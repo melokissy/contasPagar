@@ -1,0 +1,18 @@
+program Project1;
+
+uses
+  Vcl.Forms,
+  unContasPagar in 'unContasPagar.pas' {frmPrincipal},
+  unDMConexao in 'Conexao\unDMConexao.pas' {dmConexao: TDataModule},
+  unPadrao in 'Padrao\unPadrao.pas' {frmPadrao},
+  unDmUsuarios in 'Usuario\unDmUsuarios.pas' {dmUsuario: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TdmConexao, dmConexao);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.Run;
+end.

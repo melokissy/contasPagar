@@ -6,10 +6,11 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
   System.Actions, Vcl.ActnList, Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls,
-  Vcl.ComCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids;
+  Vcl.ComCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.ExtCtrls,
+  Vcl.StdCtrls;
 
 type
-  TForm1 = class(TForm)
+  TfrmPadrao = class(TForm)
     ActionList1: TActionList;
     actIncluir: TAction;
     actSalvar: TAction;
@@ -17,21 +18,20 @@ type
     actCancelar: TAction;
     actFechar: TAction;
     ImageList1: TImageList;
-    ToolBar1: TToolBar;
-    ToolButton1: TToolButton;
     actAlterar: TAction;
-    ToolButton2: TToolButton;
-    ToolButton3: TToolButton;
-    ToolButton4: TToolButton;
-    ToolButton5: TToolButton;
-    ToolButton6: TToolButton;
-    ToolButton7: TToolButton;
-    ToolButton8: TToolButton;
-    PageControl: TPageControl;
+    StatusBar1: TStatusBar;
+    Label1: TLabel;
+    Image1: TImage;
+    PageControl1: TPageControl;
     tsConsulta: TTabSheet;
     tsCadastro: TTabSheet;
-    DBGrid1: TDBGrid;
-    StatusBar1: TStatusBar;
+    dbgConsulta: TDBGrid;
+    btnIncluir: TSpeedButton;
+    btnAlterar: TSpeedButton;
+    btnExcluir: TSpeedButton;
+    btnFechar: TSpeedButton;
+    btnSalvar: TSpeedButton;
+    btnCancelar: TSpeedButton;
     procedure actIncluirExecute(Sender: TObject);
     procedure actAlterarExecute(Sender: TObject);
     procedure actCancelarExecute(Sender: TObject);
@@ -40,30 +40,32 @@ type
     procedure actFecharExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
 
   private
     { Private declarations }
     procedure habilitaBotoes;
+    procedure DisplayHint (Sender: TObject);
   public
     { Public declarations }
   end;
 
 var
-  Form1: TForm1;
+  frmPadrao: TfrmPadrao;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm1.actAlterarExecute(Sender: TObject);
+procedure TfrmPadrao.actAlterarExecute(Sender: TObject);
 begin
-  //HabilitaBotoes;
+  HabilitaBotoes;
   StatusBar1.Panels[0].Text := 'Mensagem: Alterando registro...';
 
-  PageControl.ActivePage:=tsCadastro;
+  PageControl1.ActivePage:=tsCadastro;
 end;
 
-procedure TForm1.actCancelarExecute(Sender: TObject);
+procedure TfrmPadrao.actCancelarExecute(Sender: TObject);
 begin
   actIncluir.Enabled := True;
   actAlterar.Enabled := True;
@@ -72,21 +74,21 @@ begin
   actCancelar.Enabled := False;
   actFechar.Enabled := True;
 
-  PageControl.ActivePage:=tsConsulta;
+  PageControl1.ActivePage:=tsConsulta;
 
 end;
 
-procedure TForm1.actExcluirExecute(Sender: TObject);
+procedure TfrmPadrao.actExcluirExecute(Sender: TObject);
 begin
   //
 end;
 
-procedure TForm1.actFecharExecute(Sender: TObject);
+procedure TfrmPadrao.actFecharExecute(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TForm1.actIncluirExecute(Sender: TObject);
+procedure TfrmPadrao.actIncluirExecute(Sender: TObject);
 begin
   actIncluir.Enabled := False;
   actAlterar.Enabled := False;
@@ -95,13 +97,15 @@ begin
   actSalvar.Enabled := True;
   actCancelar.Enabled := True;
 
-  StatusBar1.Panels[0].Text := 'Mensagem: Incluindo registro...';
-  PageControl.ActivePage:=tsCadastro;
+  //StatusBar1.Panels[0].Text := 'Mensagem: Incluindo registro...';
+  PageControl1.ActivePage:=tsCadastro;
 end;
 
 
-procedure TForm1.actSalvarExecute(Sender: TObject);
+procedure TfrmPadrao.actSalvarExecute(Sender: TObject);
 begin
+  PageControl1.ActivePage:=tsConsulta;
+
   actIncluir.Enabled := True;
   actAlterar.Enabled := True;
   actExcluir.Enabled := True;
@@ -112,14 +116,25 @@ begin
   StatusBar1.Panels[0].Text := 'Mensagem: Incluindo registro...';
 end;
 
-procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TfrmPadrao.DisplayHint(Sender: TObject);
+begin
+  if Assigned(StatusBar1) then
+    StatusBar1.Panels[0].Text := 'Mensagem: ' +Application.Hint;
+end;
+
+procedure TfrmPadrao.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action:= caFree;
 end;
 
-procedure TForm1.FormShow(Sender: TObject);
+procedure TfrmPadrao.FormCreate(Sender: TObject);
 begin
-  PageControl.ActivePage:=tsConsulta;
+  Application.OnHint := DisplayHint;
+end;
+
+procedure TfrmPadrao.FormShow(Sender: TObject);
+begin
+  PageControl1.ActivePage:=tsConsulta;
 
   actIncluir.Enabled := True;
   actAlterar.Enabled := True;
@@ -129,7 +144,7 @@ begin
   actFechar.Enabled := True;
 end;
 
-procedure TForm1.habilitaBotoes;
+procedure TfrmPadrao.habilitaBotoes;
 begin
   actIncluir.Enabled := False;
   actAlterar.Enabled := False;

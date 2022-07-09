@@ -1,0 +1,147 @@
+unit unClasseUsuarios;
+
+interface
+
+uses
+System.SysUtils, System.Classes, Vcl.Dialogs, Datasnap.DBClient, Data.DB;
+
+type Tusuario = class
+  private
+
+  //atributos privados da classe
+  ucodigo: integer;
+  unome: string;
+  ulogin: string;
+  uemail: string;
+  usenha: string;
+  ucpf: string;
+  uendereco: string;
+  ucepid: integer;
+
+public
+  constructor Create;
+  destructor Destroy;
+
+  procedure Incluir;
+  procedure Alterar;
+  procedure Excluir;
+  procedure Cancelar;
+  procedure Salvar;
+  procedure GetDados;
+
+  function getId(ulogin:string):string;
+  function getNome(ulogin:string):string;
+  function getSenha(ulogin:string):string;
+
+  //atributos publicos da classe
+  property codigo: Integer read ucodigo write ucodigo;
+  property nome: string read unome write unome;
+  property login: string read ulogin write ulogin;
+  property email: string read uemail write uemail;
+  property senha: string read usenha write usenha;
+  property cpf: string read ucpf write ucpf;
+  property endereco: string read uendereco write uendereco;
+  property cep: integer read ucepid write ucepid;
+
+end;
+
+implementation
+
+{ Tusuario }
+
+uses unDmUsuarios;
+
+procedure Tusuario.Alterar;
+begin
+  if Assigned(dmUsuario) then
+  dmUsuario.AlterarUsuario;
+end;
+
+procedure Tusuario.Cancelar;
+begin
+  if Assigned(dmUsuario) then
+  dmUsuario.CancelarUsuario;
+end;
+
+constructor Tusuario.Create;
+begin
+  try
+    dmUsuario:= TdmUsuario.Create(nil);
+    dmUsuario.cdsUsuarios.Open;
+  except
+    showMessage('Ocorreu um erro ao tentar criar o datamodule de Usuários');
+  end;
+end;
+
+destructor Tusuario.Destroy;
+begin
+  dmUsuario.cdsUsuarios.Close;
+  FreeAndNil(dmUsuario);
+end;
+
+procedure Tusuario.Excluir;
+begin
+  if Assigned(dmUsuario) then
+  dmUsuario.ExcluirUsuario;
+end;
+
+procedure Tusuario.GetDados;
+begin
+  ucodigo := dmUsuario.cdsUsuariosIDUSU.Value;
+  unome := dmUsuario.cdsUsuariosNOMEUSU.Text;
+  ulogin := dmUsuario.cdsUsuariosLOGINUSU.Text;
+  uemail := dmUsuario.cdsUsuariosEMAILUSU.Text;
+  usenha := dmUsuario.cdsUsuariosSENHAUSU.Text;
+  ucpf := dmUsuario.cdsUsuariosCPFUSU.Text;
+  uendereco := dmUsuario.cdsUsuariosENDERECOUSU.Text;
+  ucepid := dmUsuario.cdsUsuariosCEPID.Value;
+
+end;
+
+//retorna o id atraves do login
+function Tusuario.getId(ulogin: string): string;
+begin
+  Result:='';
+  dmUsuario.qryAux.sql.clear;
+  dmUsuario.qryAux.sql.add('select idusu from usuario where loginusu ='+QuotedStr(ulogin)
+        +'order by nomeusu');
+  dmUsuario.qryAux.Open;
+  Result:= dmUsuario.qryAux.FieldByName('idusu').AsString;
+  dmUsuario.qryAux.Close;
+  //ShowMessage('Código do usuario: '+Result);
+end;
+
+function Tusuario.getNome(ulogin: string): string;
+begin
+  Result:='';
+  dmUsuario.qryAux.sql.clear;
+  dmUsuario.qryAux.sql.add('select nomeusu from usuario where loginusu ='+QuotedStr(ulogin)
+        +'order by nomeusu');
+  dmUsuario.qryAux.Open;
+  Result:= dmUsuario.qryAux.FieldByName('nomeusu').AsString;
+  dmUsuario.qryAux.Close;
+end;
+
+function Tusuario.getSenha(ulogin: string): string;
+begin
+  Result:='';
+  dmUsuario.qryAux.sql.clear;
+  dmUsuario.qryAux.sql.add('select usu_senha from usuario where loginusu ='+QuotedStr(ulogin)
+        +'order by nomeusu');
+  dmUsuario.qryAux.Open;
+  //Result:= Criptografar(dmUsuario.qryAux.FieldByName('senhausu').AsString);
+  dmUsuario.qryAux.Close;
+  //ShowMessage('Senha do usuario: '+Result);
+end;
+
+procedure Tusuario.Incluir;
+begin
+
+end;
+
+procedure Tusuario.Salvar;
+begin
+
+end;
+
+end.
