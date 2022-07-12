@@ -1,9 +1,10 @@
 object frmLogin: TfrmLogin
   Left = 0
   Top = 0
+  BorderStyle = bsDialog
   Caption = 'Sistema de Contas a Pagar'
-  ClientHeight = 305
-  ClientWidth = 566
+  ClientHeight = 315
+  ClientWidth = 576
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,8 +19,8 @@ object frmLogin: TfrmLogin
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 328
-    Top = 40
+    Left = 336
+    Top = 32
     Width = 127
     Height = 16
     Caption = 'Bem vindo ao Sistema'
@@ -31,8 +32,8 @@ object frmLogin: TfrmLogin
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 296
-    Top = 88
+    Left = 304
+    Top = 70
     Width = 30
     Height = 16
     Caption = 'Login'
@@ -44,8 +45,8 @@ object frmLogin: TfrmLogin
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 296
-    Top = 144
+    Left = 304
+    Top = 126
     Width = 30
     Height = 16
     Caption = 'Login'
@@ -56,24 +57,31 @@ object frmLogin: TfrmLogin
     Font.Style = []
     ParentFont = False
   end
+  object Label4: TLabel
+    Left = 384
+    Top = 268
+    Width = 52
+    Height = 13
+    Caption = 'Vers'#227'o 1.0'
+  end
   object edtLogin: TEdit
-    Left = 296
-    Top = 110
+    Left = 304
+    Top = 92
     Width = 201
     Height = 21
     TabOrder = 0
   end
   object edtSenha: TEdit
-    Left = 296
-    Top = 166
+    Left = 304
+    Top = 148
     Width = 201
     Height = 21
     PasswordChar = '*'
     TabOrder = 1
   end
   object btnAcessar: TButton
-    Left = 317
-    Top = 240
+    Left = 325
+    Top = 208
     Width = 75
     Height = 25
     Caption = 'Acessar'
@@ -81,8 +89,8 @@ object frmLogin: TfrmLogin
     OnClick = btnAcessarClick
   end
   object btnFechar: TButton
-    Left = 406
-    Top = 240
+    Left = 414
+    Top = 208
     Width = 75
     Height = 25
     Caption = 'Fechar'
@@ -93,11 +101,12 @@ object frmLogin: TfrmLogin
     Left = 0
     Top = 0
     Width = 241
-    Height = 305
+    Height = 315
     Align = alLeft
     Color = clWhite
     ParentBackground = False
     TabOrder = 4
+    ExplicitHeight = 305
     object Image1: TImage
       Left = 64
       Top = 104

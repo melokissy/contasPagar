@@ -17,6 +17,7 @@ type
     btnFechar: TButton;
     Panel1: TPanel;
     Image1: TImage;
+    Label4: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
@@ -25,8 +26,15 @@ type
   private
     { Private declarations }
     oUsu: Tusuario;
+
+    uloginID   : String;
+    uloginNome : String;
+    procedure SalvaLoginID(const Value: String);
+    procedure SalvaloginNome(const Value: String);
   public
     { Public declarations }
+    property loginID   : String read uloginID write SalvaLoginID;
+    property loginNome : String read uloginNome write SalvaloginNome;
   end;
 
 var
@@ -35,6 +43,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses unDmUsuarios;
 
 
 
@@ -48,7 +58,7 @@ begin
   cSenha := oUsu.getSenha(edtLogin.Text);
   cID := oUsu.getId(edtLogin.Text);
 
-  //SalvaLoginID(cID);
+  SalvaLoginID(cID);
 
   if cUser='' then
   begin
@@ -85,6 +95,18 @@ end;
 procedure TfrmLogin.FormDestroy(Sender: TObject);
 begin
   FreeAndNil(oUsu);
+end;
+
+procedure TfrmLogin.SalvaLoginID(const Value: String);
+begin
+  uloginID := Value;
+  dmUsuario.LoginID := uloginID;
+end;
+
+procedure TfrmLogin.SalvaloginNome(const Value: String);
+begin
+  uloginNome := Value;
+  dmUsuario.LoginNome := uloginNome;
 end;
 
 end.

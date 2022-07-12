@@ -55,7 +55,7 @@ implementation
 
 {$R *.dfm}
 
-uses unUsuarioView, unLoginView;
+uses unUsuarioView, unLoginView, unDmUsuarios;
 
 procedure TfrmPrincipal.actBaixaExecute(Sender: TObject);
 begin
@@ -94,6 +94,8 @@ end;
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
   frmLogin.ShowModal;
+
+  StatusBar1.Panels[1].Text:='Usuário: '+dmUsuario.LoginNome;
 end;
 
 procedure TfrmPrincipal.Sair1Click(Sender: TObject);

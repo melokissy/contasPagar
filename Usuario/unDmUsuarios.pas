@@ -24,6 +24,10 @@ type
     cdsUsuariosCEPID: TIntegerField;
   private
     { Private declarations }
+    uLoginID: string;
+    uLoginNome: string;
+    procedure SalvaLoginID(const Value: string);
+    procedure SalvaLoginNome(const Value: string);
   public
     { Public declarations }
     procedure IncluirUsuario;
@@ -31,6 +35,9 @@ type
     procedure ExcluirUsuario;
     procedure SalvarUsuario;
     procedure CancelarUsuario;
+
+    property LoginID: string read uLoginID write SalvaLoginID;
+    property LoginNome: string read uLoginNome write SalvaLoginNome;
   end;
 
 var
@@ -86,6 +93,21 @@ begin
     on E: Exception do
       ShowMessage('Ocorreu um erro ao tentar incluir o registro: ' + E.Message);
   end;
+end;
+
+procedure TdmUsuario.SalvaLoginID(const Value: string);
+begin
+  qryAux.SQL.Clear;
+  qryAux.Open('Select * from usuarios where idusu = ' + QuotedStr(Value));
+
+  uLoginID   := qryAux.FieldByName('idusu').AsString;
+  uLoginNome := qryAux.FieldByName('nomeusu').AsString;
+  qryAux.Close;
+end;
+
+procedure TdmUsuario.SalvaLoginNome(const Value: string);
+begin
+  uLoginNome := Value;
 end;
 
 procedure TdmUsuario.SalvarUsuario;
