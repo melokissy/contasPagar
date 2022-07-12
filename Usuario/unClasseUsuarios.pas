@@ -112,7 +112,7 @@ function Tusuario.getId(ulogin: string): string;
 begin
   Result:='';
   dmUsuario.qryAux.sql.clear;
-  dmUsuario.qryAux.sql.add('select idusu from usuario where loginusu ='+QuotedStr(ulogin)
+  dmUsuario.qryAux.sql.add('select idusu from usuarios where loginusu ='+QuotedStr(ulogin)
         +'order by nomeusu');
   dmUsuario.qryAux.Open;
   Result:= dmUsuario.qryAux.FieldByName('idusu').AsString;
@@ -124,7 +124,7 @@ function Tusuario.getNome(ulogin: string): string;
 begin
   Result:='';
   dmUsuario.qryAux.sql.clear;
-  dmUsuario.qryAux.sql.add('select nomeusu from usuario where loginusu ='+QuotedStr(ulogin)
+  dmUsuario.qryAux.sql.add('select nomeusu from usuarios where loginusu ='+QuotedStr(ulogin)
         +'order by nomeusu');
   dmUsuario.qryAux.Open;
   Result:= dmUsuario.qryAux.FieldByName('nomeusu').AsString;
@@ -135,10 +135,11 @@ function Tusuario.getSenha(ulogin: string): string;
 begin
   Result:='';
   dmUsuario.qryAux.sql.clear;
-  dmUsuario.qryAux.sql.add('select usu_senha from usuario where loginusu ='+QuotedStr(ulogin)
+  dmUsuario.qryAux.sql.add('select senhausu from usuarios where loginusu ='+QuotedStr(ulogin)
         +'order by nomeusu');
   dmUsuario.qryAux.Open;
   //Result:= Criptografar(dmUsuario.qryAux.FieldByName('senhausu').AsString);
+  Result:= dmUsuario.qryAux.FieldByName('senhausu').AsString;
   dmUsuario.qryAux.Close;
   //ShowMessage('Senha do usuario: '+Result);
 end;

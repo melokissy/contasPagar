@@ -277,6 +277,7 @@ inherited frmUsuarios: TfrmUsuarios
   end
   inherited StatusBar1: TStatusBar
     Top = 455
+    ExplicitTop = 455
   end
   inherited PageControl1: TPageControl
     Left = 29

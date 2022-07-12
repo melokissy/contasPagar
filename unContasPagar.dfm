@@ -14,6 +14,7 @@ object frmPrincipal: TfrmPrincipal
   OldCreateOrder = False
   Position = poOwnerFormCenter
   WindowState = wsMaximized
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object StatusBar1: TStatusBar

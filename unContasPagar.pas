@@ -41,6 +41,7 @@ type
     procedure actSaldoExecute(Sender: TObject);
     procedure actBaixaExecute(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -54,7 +55,7 @@ implementation
 
 {$R *.dfm}
 
-uses unUsuarioView;
+uses unUsuarioView, unLoginView;
 
 procedure TfrmPrincipal.actBaixaExecute(Sender: TObject);
 begin
@@ -88,6 +89,11 @@ begin
   //ShowMessage('TESTE USUARIOS');
   Application.CreateForm(TfrmUsuarios, frmUsuarios);
   frmUsuarios.ShowModal;
+end;
+
+procedure TfrmPrincipal.FormShow(Sender: TObject);
+begin
+  frmLogin.ShowModal;
 end;
 
 procedure TfrmPrincipal.Sair1Click(Sender: TObject);

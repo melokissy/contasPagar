@@ -84,14 +84,12 @@ object frmPadrao: TfrmPadrao
       item
         Width = 50
       end>
-    ExplicitTop = 550
-    ExplicitWidth = 824
   end
   object PageControl1: TPageControl
     Left = 25
     Top = 80
     Width = 664
-    Height = 313
+    Height = 305
     ActivePage = tsCadastro
     TabOrder = 1
     object tsConsulta: TTabSheet
@@ -100,7 +98,7 @@ object frmPadrao: TfrmPadrao
         Left = 0
         Top = 0
         Width = 656
-        Height = 285
+        Height = 277
         Align = alClient
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
@@ -115,7 +113,7 @@ object frmPadrao: TfrmPadrao
       ImageIndex = 1
       object btnSalvar: TSpeedButton
         Left = 576
-        Top = 232
+        Top = 224
         Width = 60
         Height = 38
         Hint = 'Salvar'
@@ -125,7 +123,7 @@ object frmPadrao: TfrmPadrao
       end
       object btnCancelar: TSpeedButton
         Left = 503
-        Top = 232
+        Top = 224
         Width = 60
         Height = 38
         Hint = 'Cancelar'

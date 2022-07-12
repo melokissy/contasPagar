@@ -8,7 +8,8 @@ uses
   unDmUsuarios in 'Usuario\unDmUsuarios.pas' {dmUsuario: TDataModule},
   unClasseUsuarios in 'Usuario\unClasseUsuarios.pas',
   unUsuarioView in 'Usuario\unUsuarioView.pas' {frmUsuarios},
-  Bib in 'Utils\Bib.pas';
+  Bib in 'Utils\Bib.pas',
+  unLoginView in 'Login\unLoginView.pas' {frmLogin};
 
 {$R *.res}
 
@@ -18,5 +19,6 @@ begin
   Application.CreateForm(TdmConexao, dmConexao);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmUsuarios, frmUsuarios);
+  Application.CreateForm(TfrmLogin, frmLogin);
   Application.Run;
 end.

@@ -1,0 +1,99 @@
+object frmLogin: TfrmLogin
+  Left = 0
+  Top = 0
+  Caption = 'Sistema de Contas a Pagar'
+  ClientHeight = 305
+  ClientWidth = 566
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poOwnerFormCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 280
+    Top = 40
+    Width = 236
+    Height = 16
+    Caption = 'Bem vindo ao Sistema de Contas a Pagar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 280
+    Top = 88
+    Width = 30
+    Height = 16
+    Caption = 'Login'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 280
+    Top = 144
+    Width = 30
+    Height = 16
+    Caption = 'Login'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 233
+    Height = 305
+    Align = alLeft
+    Color = clBtnShadow
+    ParentBackground = False
+    TabOrder = 0
+  end
+  object edtLogin: TEdit
+    Left = 280
+    Top = 110
+    Width = 201
+    Height = 21
+    TabOrder = 1
+  end
+  object edtSenha: TEdit
+    Left = 280
+    Top = 166
+    Width = 201
+    Height = 21
+    TabOrder = 2
+  end
+  object btnAcessar: TButton
+    Left = 317
+    Top = 240
+    Width = 75
+    Height = 25
+    Caption = 'Acessar'
+    TabOrder = 3
+  end
+  object btnFechar: TButton
+    Left = 406
+    Top = 240
+    Width = 75
+    Height = 25
+    Caption = 'Fechar'
+    TabOrder = 4
+  end
+end
