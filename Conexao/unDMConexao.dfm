@@ -23,7 +23,7 @@ object dmConexao: TdmConexao
       'Password=masterkey'
       'Server=localhost'
       'Port=3050'
-      'CharacterSet=ISO8859_1'
+      'CharacterSet=ISO8859_2'
       'DriverID=fbDriverLink')
     Left = 56
     Top = 72

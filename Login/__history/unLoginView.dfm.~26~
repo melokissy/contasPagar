@@ -1,9 +1,10 @@
 object frmLogin: TfrmLogin
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'Sistema de Contas a Pagar'
-  ClientHeight = 305
-  ClientWidth = 566
+  ClientHeight = 344
+  ClientWidth = 582
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,11 +19,11 @@ object frmLogin: TfrmLogin
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 328
-    Top = 40
-    Width = 127
+    Left = 400
+    Top = 62
+    Width = 59
     Height = 16
-    Caption = 'Bem vindo ao Sistema'
+    Caption = 'Bem vindo'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -31,8 +32,8 @@ object frmLogin: TfrmLogin
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 296
-    Top = 88
+    Left = 328
+    Top = 94
     Width = 30
     Height = 16
     Caption = 'Login'
@@ -44,8 +45,8 @@ object frmLogin: TfrmLogin
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 296
-    Top = 144
+    Left = 328
+    Top = 150
     Width = 30
     Height = 16
     Caption = 'Login'
@@ -57,23 +58,23 @@ object frmLogin: TfrmLogin
     ParentFont = False
   end
   object edtLogin: TEdit
-    Left = 296
-    Top = 110
+    Left = 328
+    Top = 116
     Width = 201
     Height = 21
     TabOrder = 0
   end
   object edtSenha: TEdit
-    Left = 296
-    Top = 166
+    Left = 328
+    Top = 172
     Width = 201
     Height = 21
     PasswordChar = '*'
     TabOrder = 1
   end
   object btnAcessar: TButton
-    Left = 317
-    Top = 240
+    Left = 349
+    Top = 232
     Width = 75
     Height = 25
     Caption = 'Acessar'
@@ -81,8 +82,8 @@ object frmLogin: TfrmLogin
     OnClick = btnAcessarClick
   end
   object btnFechar: TButton
-    Left = 406
-    Top = 240
+    Left = 438
+    Top = 232
     Width = 75
     Height = 25
     Caption = 'Fechar'
@@ -92,14 +93,14 @@ object frmLogin: TfrmLogin
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 241
-    Height = 305
+    Width = 265
+    Height = 344
     Align = alLeft
     Color = clWhite
     ParentBackground = False
     TabOrder = 4
     object Image1: TImage
-      Left = 64
+      Left = 72
       Top = 104
       Width = 105
       Height = 105
@@ -1066,6 +1067,39 @@ object frmLogin: TfrmLogin
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00}
+    end
+    object Label4: TLabel
+      Left = 101
+      Top = 268
+      Width = 52
+      Height = 13
+      Caption = 'Vers'#227'o 1.0'
+    end
+    object Label5: TLabel
+      Left = 54
+      Top = 44
+      Width = 150
+      Height = 18
+      Caption = 'Sistema de Controle'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGray
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 66
+      Top = 60
+      Width = 111
+      Height = 18
+      Caption = 'Contas a pagar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGray
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
   end
 end

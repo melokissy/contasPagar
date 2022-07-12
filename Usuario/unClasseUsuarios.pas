@@ -17,6 +17,7 @@ type Tusuario = class
   ucpf: string;
   uendereco: string;
   ucepid: integer;
+  senhaCrip: string;
 
 public
   constructor Create;
@@ -153,6 +154,8 @@ end;
 procedure Tusuario.Salvar;
 begin
 
+  //senhaCrip := Bib.Criptografar(uSenha);
+
 if validador(uCPF) then
   begin
   if uEmail <> '' then
@@ -161,7 +164,7 @@ if validador(uCPF) then
       dmUsuario.cdsUsuariosNOMEUSU.Text:= unome;
       dmUsuario.cdsUsuariosLOGINUSU.Text:= ulogin;
       dmUsuario.cdsUsuariosEMAILUSU.Text:= uemail;
-      dmUsuario.cdsUsuariosSENHAUSU.Text:= usenha;
+      dmUsuario.cdsUsuariosSENHAUSU.Text:= senhaCrip;
       dmUsuario.cdsUsuariosCPFUSU.Text:= ucpf;
       dmUsuario.cdsUsuariosENDERECOUSU.Text:= uendereco;
       dmUsuario.cdsUsuariosCEPID.Value:= ucepid;

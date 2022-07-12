@@ -18,8 +18,6 @@ type
     Panel1: TPanel;
     Image1: TImage;
     Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);

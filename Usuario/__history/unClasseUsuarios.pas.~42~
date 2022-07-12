@@ -17,6 +17,7 @@ type Tusuario = class
   ucpf: string;
   uendereco: string;
   ucepid: integer;
+  senhaCrip: string;
 
 public
   constructor Create;
@@ -112,7 +113,7 @@ function Tusuario.getId(ulogin: string): string;
 begin
   Result:='';
   dmUsuario.qryAux.sql.clear;
-  dmUsuario.qryAux.sql.add('select idusu from usuario where loginusu ='+QuotedStr(ulogin)
+  dmUsuario.qryAux.sql.add('select idusu from usuarios where loginusu ='+QuotedStr(ulogin)
         +'order by nomeusu');
   dmUsuario.qryAux.Open;
   Result:= dmUsuario.qryAux.FieldByName('idusu').AsString;
@@ -124,7 +125,7 @@ function Tusuario.getNome(ulogin: string): string;
 begin
   Result:='';
   dmUsuario.qryAux.sql.clear;
-  dmUsuario.qryAux.sql.add('select nomeusu from usuario where loginusu ='+QuotedStr(ulogin)
+  dmUsuario.qryAux.sql.add('select nomeusu from usuarios where loginusu ='+QuotedStr(ulogin)
         +'order by nomeusu');
   dmUsuario.qryAux.Open;
   Result:= dmUsuario.qryAux.FieldByName('nomeusu').AsString;
@@ -135,10 +136,11 @@ function Tusuario.getSenha(ulogin: string): string;
 begin
   Result:='';
   dmUsuario.qryAux.sql.clear;
-  dmUsuario.qryAux.sql.add('select usu_senha from usuario where loginusu ='+QuotedStr(ulogin)
+  dmUsuario.qryAux.sql.add('select senhausu from usuarios where loginusu ='+QuotedStr(ulogin)
         +'order by nomeusu');
   dmUsuario.qryAux.Open;
   //Result:= Criptografar(dmUsuario.qryAux.FieldByName('senhausu').AsString);
+  Result:= dmUsuario.qryAux.FieldByName('senhausu').AsString;
   dmUsuario.qryAux.Close;
   //ShowMessage('Senha do usuario: '+Result);
 end;
@@ -151,18 +153,38 @@ end;
 
 procedure Tusuario.Salvar;
 begin
-  //atribuindo ao clientdataset as infos do objeto fornecedor
-  dmUsuario.cdsUsuariosIDUSU.Value:= ucodigo;
-  dmUsuario.cdsUsuariosNOMEUSU.Text:= unome;
-  dmUsuario.cdsUsuariosLOGINUSU.Text:= ulogin;
-  dmUsuario.cdsUsuariosEMAILUSU.Text:= uemail;
-  dmUsuario.cdsUsuariosSENHAUSU.Text:= usenha;
-  dmUsuario.cdsUsuariosCPFUSU.Text:= ucpf;
-  dmUsuario.cdsUsuariosENDERECOUSU.Text:= uendereco;
-  dmUsuario.cdsUsuariosCEPID.Value:= ucepid;
 
-  if Assigned(dmUsuario) then
-    dmUsuario.SalvarUsuario;
+  senhaCrip := Bib.Criptografar(uSenha);
+  ShowMessage('SENHA CRIPTO: '+uSenha);
+
+if validador(uCPF) then
+  begin
+  if uEmail <> '' then
+    begin
+      dmUsuario.cdsUsuariosIDUSU.Value:= ucodigo;
+      dmUsuario.cdsUsuariosNOMEUSU.Text:= unome;
+      dmUsuario.cdsUsuariosLOGINUSU.Text:= ulogin;
+      dmUsuario.cdsUsuariosEMAILUSU.Text:= uemail;
+      dmUsuario.cdsUsuariosSENHAUSU.Text:= senhaCrip;
+      dmUsuario.cdsUsuariosCPFUSU.Text:= ucpf;
+      dmUsuario.cdsUsuariosENDERECOUSU.Text:= uendereco;
+      dmUsuario.cdsUsuariosCEPID.Value:= ucepid;
+
+      if Assigned(dmUsuario) then
+      dmUsuario.SalvarUsuario;
+  end
+  else
+    begin
+      ShowMessage('Email não informado');
+      dmUsuario.CancelarUsuario;
+    end;
+  end
+
+  else
+  begin
+    ShowMessage('CPF não informado ou inválido');
+    dmUsuario.CancelarUsuario;
+  end;
 
 end;
 
