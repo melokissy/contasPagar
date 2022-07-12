@@ -33,6 +33,7 @@ public
   function getId(ulogin:string):string;
   function getNome(ulogin:string):string;
   function getSenha(ulogin:string):string;
+  function validador(uCPF:string):boolean;
 
   //atributos publicos da classe
   property codigo: integer read ucodigo write ucodigo;
@@ -50,7 +51,7 @@ implementation
 
 { Tusuario }
 
-uses unDmUsuarios;
+uses unDmUsuarios, Bib;
 
 procedure Tusuario.Alterar;
 begin
@@ -150,19 +151,41 @@ end;
 
 procedure Tusuario.Salvar;
 begin
-  //atribuindo ao clientdataset as infos do objeto fornecedor
-  dmUsuario.cdsUsuariosIDUSU.Value:= ucodigo;
-  dmUsuario.cdsUsuariosNOMEUSU.Text:= unome;
-  dmUsuario.cdsUsuariosLOGINUSU.Text:= ulogin;
-  dmUsuario.cdsUsuariosEMAILUSU.Text:= uemail;
-  dmUsuario.cdsUsuariosSENHAUSU.Text:= usenha;
-  dmUsuario.cdsUsuariosCPFUSU.Text:= ucpf;
-  dmUsuario.cdsUsuariosENDERECOUSU.Text:= uendereco;
-  dmUsuario.cdsUsuariosCEPID.Value:= ucepid;
 
-  if Assigned(dmUsuario) then
-    dmUsuario.SalvarUsuario;
+if validador(uCPF) then
+  begin
+  if uEmail <> '' then
+    begin
+      dmUsuario.cdsUsuariosIDUSU.Value:= ucodigo;
+      dmUsuario.cdsUsuariosNOMEUSU.Text:= unome;
+      dmUsuario.cdsUsuariosLOGINUSU.Text:= ulogin;
+      dmUsuario.cdsUsuariosEMAILUSU.Text:= uemail;
+      dmUsuario.cdsUsuariosSENHAUSU.Text:= usenha;
+      dmUsuario.cdsUsuariosCPFUSU.Text:= ucpf;
+      dmUsuario.cdsUsuariosENDERECOUSU.Text:= uendereco;
+      dmUsuario.cdsUsuariosCEPID.Value:= ucepid;
 
+      if Assigned(dmUsuario) then
+      dmUsuario.SalvarUsuario;
+  end
+  else
+    begin
+      ShowMessage('Email não informado');
+      dmUsuario.CancelarUsuario;
+    end;
+  end
+
+  else
+  begin
+    ShowMessage('CPF não informado ou inválido');
+    dmUsuario.CancelarUsuario;
+  end;
+
+end;
+
+function Tusuario.validador(uCPF: string): boolean;
+begin
+  Result := Bib.ValidaCPFUSU(uCPF);
 end;
 
 end.

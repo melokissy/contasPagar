@@ -17,13 +17,16 @@
     <Transaction>2022/07/08 18:36:52.000.097,=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
     <Transaction>2022/07/08 18:37:25.000.391,=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
     <Transaction>2022/07/08 18:37:53.000.501,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Usuario\unClasseUsuarios.pas</Transaction>
-    <Transaction>2022/07/08 19:15:27.274,=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
-    <Transaction>2022/07/08 19:15:42.283,=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
-    <Transaction>2022/07/08 19:15:58.087,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Usuario\unUsuarioView.pas=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
-    <Transaction>2022/07/08 19:15:58.087,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Usuario\unUsuarioView.dfm=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.dfm</Transaction>
-    <Transaction>2022/07/08 19:18:12.404,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Usuario\unUsuarioView.pas=</Transaction>
-    <Transaction>2022/07/08 19:19:15.558,=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
-    <Transaction>2022/07/08 19:19:32.334,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Usuario\unUsuarioView.dfm=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.dfm</Transaction>
-    <Transaction>2022/07/08 19:19:32.334,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Usuario\unUsuarioView.pas=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
+    <Transaction>2022/07/08 19:15:27.000.274,=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
+    <Transaction>2022/07/08 19:15:42.000.283,=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
+    <Transaction>2022/07/08 19:15:58.000.087,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Usuario\unUsuarioView.dfm=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.dfm</Transaction>
+    <Transaction>2022/07/08 19:15:58.000.087,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Usuario\unUsuarioView.pas=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
+    <Transaction>2022/07/08 19:18:12.000.404,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Usuario\unUsuarioView.pas=</Transaction>
+    <Transaction>2022/07/08 19:19:15.000.558,=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
+    <Transaction>2022/07/08 19:19:32.000.334,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Usuario\unUsuarioView.pas=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
+    <Transaction>2022/07/08 19:19:32.000.334,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Usuario\unUsuarioView.dfm=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.dfm</Transaction>
+    <Transaction>2022/07/11 22:34:32.000.597,=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
+    <Transaction>2022/07/11 22:50:15.000.659,=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas</Transaction>
+    <Transaction>2022/07/11 22:50:31.000.317,C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Unit1.pas=C:\Users\kkkkk\Documents\Embarcadero\Studio\Projects\Contas_pagar\Utils\Bib.pas</Transaction>
   </Transactions>
 </BorlandProject>

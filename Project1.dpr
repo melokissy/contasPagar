@@ -7,7 +7,8 @@ uses
   unPadrao in 'Padrao\unPadrao.pas' {frmPadrao},
   unDmUsuarios in 'Usuario\unDmUsuarios.pas' {dmUsuario: TDataModule},
   unClasseUsuarios in 'Usuario\unClasseUsuarios.pas',
-  unUsuarioView in 'Usuario\unUsuarioView.pas' {frmUsuarios};
+  unUsuarioView in 'Usuario\unUsuarioView.pas' {frmUsuarios},
+  Bib in 'Utils\Bib.pas';
 
 {$R *.res}
 

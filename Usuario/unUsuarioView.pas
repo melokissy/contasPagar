@@ -28,6 +28,11 @@ type
     Label10: TLabel;
     dsCadastro: TDataSource;
     edtCodigo: TSpinEdit;
+    edtCidade: TEdit;
+    Label8: TLabel;
+    edtUF: TEdit;
+    Label11: TLabel;
+    SpeedButton1: TSpeedButton;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);

@@ -2,8 +2,8 @@ object frmPadrao: TfrmPadrao
   Left = 0
   Top = 0
   Caption = 'Cadastro de'
-  ClientHeight = 569
-  ClientWidth = 824
+  ClientHeight = 473
+  ClientWidth = 717
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,8 +16,8 @@ object frmPadrao: TfrmPadrao
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 128
-    Top = 40
+    Left = 96
+    Top = 32
     Width = 41
     Height = 19
     Caption = 'T'#237'tulo'
@@ -29,16 +29,16 @@ object frmPadrao: TfrmPadrao
     ParentFont = False
   end
   object Image1: TImage
-    Left = 52
-    Top = 24
+    Left = 29
+    Top = 23
     Width = 49
     Height = 51
   end
   object btnIncluir: TSpeedButton
-    Left = 45
-    Top = 472
-    Width = 109
-    Height = 40
+    Left = 29
+    Top = 408
+    Width = 92
+    Height = 33
     Hint = 'Incluir'
     Action = actIncluir
     Images = ImageList1
@@ -46,10 +46,10 @@ object frmPadrao: TfrmPadrao
     ShowHint = True
   end
   object btnAlterar: TSpeedButton
-    Left = 173
-    Top = 472
-    Width = 109
-    Height = 40
+    Left = 141
+    Top = 408
+    Width = 92
+    Height = 33
     Hint = 'Alterar'
     Action = actAlterar
     Images = ImageList1
@@ -57,10 +57,10 @@ object frmPadrao: TfrmPadrao
     ShowHint = True
   end
   object btnExcluir: TSpeedButton
-    Left = 296
-    Top = 472
-    Width = 109
-    Height = 40
+    Left = 256
+    Top = 408
+    Width = 92
+    Height = 33
     Hint = 'Excluir'
     Action = actExcluir
     Images = ImageList1
@@ -68,28 +68,30 @@ object frmPadrao: TfrmPadrao
     ShowHint = True
   end
   object btnFechar: TSpeedButton
-    Left = 688
-    Top = 472
-    Width = 109
-    Height = 40
+    Left = 597
+    Top = 408
+    Width = 92
+    Height = 33
     Action = actFechar
     Images = ImageList1
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 550
-    Width = 824
+    Top = 454
+    Width = 717
     Height = 19
     Panels = <
       item
         Width = 50
       end>
+    ExplicitTop = 550
+    ExplicitWidth = 824
   end
   object PageControl1: TPageControl
-    Left = 44
-    Top = 104
-    Width = 753
-    Height = 345
+    Left = 25
+    Top = 80
+    Width = 664
+    Height = 313
     ActivePage = tsCadastro
     TabOrder = 1
     object tsConsulta: TTabSheet
@@ -97,8 +99,8 @@ object frmPadrao: TfrmPadrao
       object dbgConsulta: TDBGrid
         Left = 0
         Top = 0
-        Width = 745
-        Height = 317
+        Width = 656
+        Height = 285
         Align = alClient
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
@@ -112,20 +114,20 @@ object frmPadrao: TfrmPadrao
       Caption = 'Cadastro'
       ImageIndex = 1
       object btnSalvar: TSpeedButton
-        Left = 656
-        Top = 256
-        Width = 65
-        Height = 41
+        Left = 576
+        Top = 232
+        Width = 60
+        Height = 38
         Hint = 'Salvar'
         Action = actSalvar
         ParentShowHint = False
         ShowHint = True
       end
       object btnCancelar: TSpeedButton
-        Left = 575
-        Top = 256
-        Width = 65
-        Height = 41
+        Left = 503
+        Top = 232
+        Width = 60
+        Height = 38
         Hint = 'Cancelar'
         Action = actCancelar
         ParentShowHint = False
@@ -135,8 +137,8 @@ object frmPadrao: TfrmPadrao
   end
   object ActionList1: TActionList
     Images = ImageList1
-    Left = 712
-    Top = 40
+    Left = 584
+    Top = 24
     object actIncluir: TAction
       Caption = 'Incluir'
       ImageIndex = 3
@@ -167,8 +169,8 @@ object frmPadrao: TfrmPadrao
     end
   end
   object ImageList1: TImageList
-    Left = 768
-    Top = 40
+    Left = 640
+    Top = 24
     Bitmap = {
       494C010106000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
