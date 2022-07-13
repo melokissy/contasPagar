@@ -1,0 +1,119 @@
+unit unClienteView;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unPadrao, Data.DB, System.ImageList,
+  Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Grids, Vcl.DBGrids,
+  Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Samples.Spin,UnClasseCliente,
+  Vcl.Mask;
+
+type
+  TfrmClientes = class(TfrmPadrao)
+    Label2: TLabel;
+    Nome: TLabel;
+    edtNome: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    edtEmail: TEdit;
+    Label5: TLabel;
+    SpeedButton1: TSpeedButton;
+    edtEndereco: TEdit;
+    Label6: TLabel;
+    edtCidade: TEdit;
+    Label7: TLabel;
+    edtUF: TEdit;
+    Label8: TLabel;
+    dsCadastro: TDataSource;
+    Label9: TLabel;
+    edtCodigo: TSpinEdit;
+    edtTelefone: TMaskEdit;
+    edtCPF: TMaskEdit;
+    edtCEP: TMaskEdit;
+    procedure FormShow(Sender: TObject);
+    procedure dsCadastroDataChange(Sender: TObject; Field: TField);
+    procedure actSalvarExecute(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+
+    oCliente: Tcliente;
+
+    procedure mostraDados;
+    procedure limpaCampos;
+
+  public
+    { Public declarations }
+  end;
+
+var
+  frmClientes: TfrmClientes;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmClientes.actSalvarExecute(Sender: TObject);
+begin
+  inherited;
+
+  oCliente.codigo := edtCodigo.Value;
+  oCliente.nome := edtNome.Text;
+  oCliente.telefone := edtTelefone.Text;
+  oCliente.cpf := edtCPF.Text;
+  oCliente.email := edtEmail.Text;
+  oCliente.cep := 1;
+  oCliente.endereco := edtEndereco.Text;
+
+  oCliente.Salvar;
+end;
+
+procedure TfrmClientes.dsCadastroDataChange(Sender: TObject; Field: TField);
+begin
+  inherited;
+
+  if Assigned (oCliente) then
+  begin
+    if (dsCadastro.DataSet.State=dsBrowse) then
+      mostraDados;
+  end;
+end;
+
+procedure TfrmClientes.FormCreate(Sender: TObject);
+begin
+  inherited;
+  dsCadastro.DataSet:= oCliente.GetCds;
+end;
+
+procedure TfrmClientes.FormShow(Sender: TObject);
+begin
+  inherited;
+  PageControl1.ActivePage:=tsConsulta;
+end;
+
+procedure TfrmClientes.limpaCampos;
+begin
+  edtNome.Text:='';
+  edtTelefone.Text :='';
+  edtEndereco.Text := '';
+  edtEmail.Text := '';
+  edtCPF.Text := '';
+  edtCEP.Text := '';
+end;
+
+procedure TfrmClientes.mostraDados;
+begin
+  oCliente.GetDados;
+
+  edtCodigo.Text := IntToStr(oCliente.codigo);
+  edtNome.Text:= oCliente.nome;
+  edtTelefone.Text := oCliente.telefone;
+  edtEndereco.Text := oCliente.endereco;
+  edtEmail.Text := oCliente.email;
+  edtCPF.Text := oCliente.cpf;
+  //edtCEP.Value := oCliente.cep;
+
+end;
+
+end.

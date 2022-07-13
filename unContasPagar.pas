@@ -55,7 +55,7 @@ implementation
 
 {$R *.dfm}
 
-uses unUsuarioView, unLoginView, unDmUsuarios;
+uses unUsuarioView, unLoginView, unDmUsuarios, unClienteView;
 
 procedure TfrmPrincipal.actBaixaExecute(Sender: TObject);
 begin
@@ -76,7 +76,8 @@ end;
 
 procedure TfrmPrincipal.actClientesExecute(Sender: TObject);
 begin
-  ShowMessage('TESTE CLIENTE');
+  Application.CreateForm(TfrmClientes, frmClientes);
+  frmClientes.ShowModal;
 end;
 
 procedure TfrmPrincipal.actSaldoExecute(Sender: TObject);
@@ -86,7 +87,6 @@ end;
 
 procedure TfrmPrincipal.actUsuariosExecute(Sender: TObject);
 begin
-  //ShowMessage('TESTE USUARIOS');
   Application.CreateForm(TfrmUsuarios, frmUsuarios);
   frmUsuarios.ShowModal;
 end;

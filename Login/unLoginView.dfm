@@ -19,7 +19,7 @@ object frmLogin: TfrmLogin
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 400
+    Left = 392
     Top = 62
     Width = 59
     Height = 16
@@ -73,7 +73,7 @@ object frmLogin: TfrmLogin
     TabOrder = 1
   end
   object btnAcessar: TButton
-    Left = 349
+    Left = 341
     Top = 232
     Width = 75
     Height = 25

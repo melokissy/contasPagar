@@ -1,0 +1,15 @@
+object dmCliente: TdmCliente
+  OldCreateOrder = False
+  Height = 191
+  Width = 475
+  object cdsCliente: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 376
+    Top = 72
+  end
+  object dspCliente: TDataSetProvider
+    Left = 256
+    Top = 72
+  end
+end

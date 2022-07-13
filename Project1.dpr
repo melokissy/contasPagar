@@ -9,7 +9,10 @@ uses
   unClasseUsuarios in 'Usuario\unClasseUsuarios.pas',
   unUsuarioView in 'Usuario\unUsuarioView.pas' {frmUsuarios},
   Bib in 'Utils\Bib.pas',
-  unLoginView in 'Login\unLoginView.pas' {frmLogin};
+  unLoginView in 'Login\unLoginView.pas' {frmLogin},
+  unDmCliente in 'Cliente\unDmCliente.pas' {dmCliente: TDataModule},
+  unClasseCliente in 'Cliente\unClasseCliente.pas',
+  unClienteView in 'Cliente\unClienteView.pas' {frmClientes};
 
 {$R *.res}
 
@@ -20,5 +23,7 @@ begin
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmUsuarios, frmUsuarios);
   Application.CreateForm(TfrmLogin, frmLogin);
+  Application.CreateForm(TdmCliente, dmCliente);
+  Application.CreateForm(TfrmClientes, frmClientes);
   Application.Run;
 end.

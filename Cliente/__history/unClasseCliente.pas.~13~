@@ -1,0 +1,143 @@
+unit unClasseCliente;
+
+interface
+
+uses
+System.SysUtils, System.Classes, Vcl.Dialogs, Datasnap.DBClient, Data.DB;
+
+type Tcliente = class
+  private
+
+  cCodigo: integer;
+  cNome: string;
+  cTelefone: string;
+  cEmail: string;
+  cEndereco: string;
+  cCepId: integer;
+  cCpf: string;
+
+public
+  constructor Create;
+  destructor Destroy;
+
+  procedure Incluir;
+  procedure Alterar;
+  procedure Excluir;
+  procedure Cancelar;
+  procedure Salvar;
+  procedure GetDados;
+
+  function GetCds: TClientDataSet;
+  function validador(uCPF:string):boolean;
+
+  property codigo: integer read cCodigo write cCodigo;
+  property nome: string read cNome write cNome;
+  property telefone: string read cTelefone write cTelefone;
+  property email: string read cEmail write cEmail;
+  property endereco: string read cEndereco write cEndereco;
+  property cep: integer read cCepId write cCepId;
+  property cpf: string read cCpf write cCpf;
+
+end;
+
+implementation
+
+{ Tcliente }
+
+uses unDmCliente;
+
+procedure Tcliente.Alterar;
+begin
+  if Assigned(dmCliente) then
+  dmCliente.Alterar;
+end;
+
+procedure Tcliente.Cancelar;
+begin
+  if Assigned(dmCliente) then
+  dmCliente.Cancelar;
+end;
+
+constructor Tcliente.Create;
+begin
+  try
+    dmCliente := TdmCliente.Create(nil);
+    dmCliente.cdsCliente.Open;
+  except
+    showMessage('Ocorreu um erro ao tentar criar o datamodule de Usuários');
+  end;
+end;
+
+destructor Tcliente.Destroy;
+begin
+  dmCliente.cdsCliente.Close;
+  FreeAndNil(dmCliente);
+end;
+
+procedure Tcliente.Excluir;
+begin
+  if Assigned(dmCliente) then
+  dmCliente.Excluir;
+end;
+
+function Tcliente.GetCds: TClientDataSet;
+begin
+
+end;
+
+procedure Tcliente.GetDados;
+begin
+  cCodigo := dmCliente.cdsClienteIDCLI.Value;
+  cNome :=  dmCliente.cdsClienteNOMECLI.Text;
+  cTelefone := dmCliente.cdsClienteTELEFONECLI.Text;
+  cEmail := dmCliente.cdsClienteEMAILCLI.Text;
+  cEndereco := dmCliente.cdsClienteENDERECOCLI.Text;
+  cCepId := dmCliente.cdsClienteCEPID.Value;
+  cCpf :=  dmCliente.cdsClienteCPFCLI.Text;
+end;
+
+procedure Tcliente.Incluir;
+begin
+  if Assigned(dmCliente) then
+  dmCliente.Incluir;
+end;
+
+procedure Tcliente.Salvar;
+begin
+
+  if validador(cCpf) then
+  begin
+  if cEmail > '' then
+    begin
+
+      dmCliente.cdsClienteIDCLI.Value := cCodigo;
+      dmCliente.cdsClienteNOMECLI.Text := cNome;
+      dmCliente.cdsClienteTELEFONECLI.Text := cTelefone;
+      dmCliente.cdsClienteEMAILCLI.Text := cEmail;
+      dmCliente.cdsClienteENDERECOCLI.Text := cEndereco;
+      dmCliente.cdsClienteCEPID.Value := cCepId;
+      dmCliente.cdsClienteCPFCLI.Text := cCpf;
+
+      if Assigned(dmCliente) then
+      dmCliente.Salvar;
+  end
+  else
+    begin
+      ShowMessage('Email não informado');
+      dmUsuario.CancelarUsuario;
+    end;
+  end
+
+  else
+  begin
+    ShowMessage('CPF não informado ou inválido');
+    dmUsuario.CancelarUsuario;
+  end;
+end;
+
+function Tcliente.validador(uCPF: string): boolean;
+begin
+
+end;
+
+end.

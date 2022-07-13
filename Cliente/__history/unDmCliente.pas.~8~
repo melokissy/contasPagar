@@ -1,0 +1,51 @@
+unit unDmCliente;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Datasnap.Provider, Data.DB, Datasnap.DBClient,
+  Data.FMTBcd, Data.SqlExpr, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,Vcl.Dialogs,
+  FireDAC.Comp.Client;
+
+type
+  TdmCliente = class(TDataModule)
+    cdsCliente: TClientDataSet;
+    dspCliente: TDataSetProvider;
+    qryCliente: TFDQuery;
+    qryAux: TFDQuery;
+    cdsClienteIDCLI: TIntegerField;
+    cdsClienteNOMECLI: TStringField;
+    cdsClienteTELEFONECLI: TStringField;
+    cdsClienteEMAILCLI: TStringField;
+    cdsClienteENDERECOCLI: TStringField;
+    cdsClienteCEPID: TIntegerField;
+    cdsClienteCPFCLI: TStringField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Incluir;
+    procedure Alterar;
+    procedure Excluir;
+    procedure Salvar;
+    procedure Cancelar;
+
+  end;
+
+var
+  dmCliente: TdmCliente;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses unDMConexao;
+
+{$R *.dfm}
+
+{ TdmCliente }
+
+
+end.

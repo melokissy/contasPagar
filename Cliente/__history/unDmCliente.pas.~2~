@@ -1,0 +1,27 @@
+unit unDmCliente;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Datasnap.Provider, Data.DB, Datasnap.DBClient;
+
+type
+  TdmCliente = class(TDataModule)
+    cdsCliente: TClientDataSet;
+    dspCliente: TDataSetProvider;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  dmCliente: TdmCliente;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.
