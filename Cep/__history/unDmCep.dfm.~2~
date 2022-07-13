@@ -1,0 +1,23 @@
+object dmCep: TdmCep
+  OldCreateOrder = False
+  Height = 174
+  Width = 402
+  object cdsCep: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 312
+    Top = 72
+  end
+  object dspCep: TDataSetProvider
+    Left = 224
+    Top = 72
+  end
+  object qryCep: TFDQuery
+    Left = 128
+    Top = 72
+  end
+  object qryAux: TFDQuery
+    Left = 40
+    Top = 72
+  end
+end

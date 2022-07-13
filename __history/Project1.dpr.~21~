@@ -7,7 +7,12 @@ uses
   unPadrao in 'Padrao\unPadrao.pas' {frmPadrao},
   unDmUsuarios in 'Usuario\unDmUsuarios.pas' {dmUsuario: TDataModule},
   unClasseUsuarios in 'Usuario\unClasseUsuarios.pas',
-  unUsuarioView in 'Usuario\unUsuarioView.pas' {frmPadrao1};
+  unUsuarioView in 'Usuario\unUsuarioView.pas' {frmUsuarios},
+  Bib in 'Utils\Bib.pas',
+  unLoginView in 'Login\unLoginView.pas' {frmLogin},
+  unDmCliente in 'Cliente\unDmCliente.pas' {dmCliente: TDataModule},
+  unClasseCliente in 'Cliente\unClasseCliente.pas',
+  unClienteView in 'Cliente\unClienteView.pas' {frmClientes};
 
 {$R *.res}
 
@@ -16,6 +21,9 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TdmConexao, dmConexao);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmPadrao1, frmPadrao1);
+  Application.CreateForm(TfrmUsuarios, frmUsuarios);
+  Application.CreateForm(TfrmLogin, frmLogin);
+  Application.CreateForm(TdmCliente, dmCliente);
+  Application.CreateForm(TfrmClientes, frmClientes);
   Application.Run;
 end.

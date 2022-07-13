@@ -12,7 +12,9 @@ uses
   unLoginView in 'Login\unLoginView.pas' {frmLogin},
   unDmCliente in 'Cliente\unDmCliente.pas' {dmCliente: TDataModule},
   unClasseCliente in 'Cliente\unClasseCliente.pas',
-  unClienteView in 'Cliente\unClienteView.pas' {frmClientes};
+  unClienteView in 'Cliente\unClienteView.pas' {frmClientes},
+  unDmCep in 'Cep\unDmCep.pas' {dmCep: TDataModule},
+  unClasseCep in 'Cep\unClasseCep.pas';
 
 {$R *.res}
 
@@ -25,5 +27,6 @@ begin
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TdmCliente, dmCliente);
   Application.CreateForm(TfrmClientes, frmClientes);
+  Application.CreateForm(TdmCep, dmCep);
   Application.Run;
 end.
