@@ -144,6 +144,14 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Cep\unClasseCep.pas"/>
+        <DCCReference Include="Cep\unPesquisaCEP.pas">
+            <Form>Form1</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Cep\unCEPView.pas">
+            <Form>frmCEP</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

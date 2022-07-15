@@ -1,0 +1,79 @@
+unit unCEPView;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unPadrao, Data.DB, System.ImageList,
+  Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Grids, Vcl.DBGrids,
+  Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Samples.Spin,unClasseCep,xmldom, XMLIntf, XMLDoc;
+
+type
+  TfrmCEP = class(TfrmPadrao)
+    dsCadastro: TDataSource;
+    edtCodigo: TSpinEdit;
+    Label2: TLabel;
+    edtLogradouro: TEdit;
+    Logradouro: TLabel;
+    Label3: TLabel;
+    edtCidade: TEdit;
+    edtUF: TEdit;
+    Label4: TLabel;
+    edtCEPNumero: TEdit;
+    Label5: TLabel;
+    Action1: TAction;
+    btnPesquisaWeb: TSpeedButton;
+    procedure btnPesquisaWebClick(Sender: TObject);
+    procedure actSalvarExecute(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+    oCEP: Tcep;
+  public
+    { Public declarations }
+    raizXML: IXMLNode;
+  end;
+
+var
+  frmCEP: TfrmCEP;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmCEP.actSalvarExecute(Sender: TObject);
+begin
+  inherited;
+  oCEP.codigo := edtCodigo.Value;
+  oCEP.logradouro := edtLogradouro.Text;
+  oCEP.estado := edtUF.Text;
+  oCEP.numero := edtCEPNumero.Text;
+  oCEP.cidade := edtCidade.Text;
+
+  oCEP.Salvar;
+end;
+
+procedure TfrmCEP.btnPesquisaWebClick(Sender: TObject);
+begin
+  raizXML := oCEP.GetCEP(edtCEPNumero.Text);
+
+  edtLogradouro.Text := raizXML.ChildNodes.FindNode('logradouro').Text;
+  edtCidade.Text := raizXML.ChildNodes.FindNode('localidade').Text;
+  edtUF.Text := raizXML.ChildNodes.FindNode('uf').Text;
+end;
+
+procedure TfrmCEP.FormCreate(Sender: TObject);
+begin
+  inherited;
+  oCEP:= Tcep.Create;
+  dsCadastro.DataSet:= oCEP.GetCds;
+end;
+
+procedure TfrmCEP.FormShow(Sender: TObject);
+begin
+  inherited;
+  PageControl1.ActivePage:=tsConsulta;
+end;
+
+end.

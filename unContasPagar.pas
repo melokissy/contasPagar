@@ -55,7 +55,7 @@ implementation
 
 {$R *.dfm}
 
-uses unUsuarioView, unLoginView, unDmUsuarios, unClienteView;
+uses unUsuarioView, unLoginView, unDmUsuarios, unClienteView, unCEPView;
 
 procedure TfrmPrincipal.actBaixaExecute(Sender: TObject);
 begin
@@ -71,7 +71,8 @@ end;
 
 procedure TfrmPrincipal.actCEPExecute(Sender: TObject);
 begin
-  ShowMessage('TESTE CEP');
+  Application.CreateForm(TfrmCEP, frmCEP);
+  frmCEP.ShowModal;
 end;
 
 procedure TfrmPrincipal.actClientesExecute(Sender: TObject);

@@ -3,7 +3,7 @@ unit unClasseCep;
 interface
 
 uses
-System.SysUtils, System.Classes, Vcl.Dialogs, Datasnap.DBClient, Data.DB;
+System.SysUtils, System.Classes, Vcl.Dialogs, Datasnap.DBClient, Data.DB, xmldom, XMLIntf, XMLDoc;
 
 type Tcep = class
   private
@@ -24,6 +24,8 @@ public
   procedure Cancelar;
   procedure Salvar;
   procedure GetDados;
+
+  function GetCEP(CEP: string):IXMLNode;
 
   function GetCds: TClientDataSet;
 
@@ -80,6 +82,40 @@ begin
   Result := nil;
   if Assigned(dmCep) then
     Result := dmCep.cdsCep;
+end;
+
+function Tcep.GetCEP(CEP: string):IXMLNode;
+var
+  XMLDocument1: IXMLDocument;
+  raizXML: IXMLNode;
+begin
+  XMLDocument1 := TXMLDocument.Create(nil);
+  try
+    //mmResultado.Clear;
+    XMLDocument1.FileName := 'https://viacep.com.br/ws/' + Trim(Cep) + '/xml/';
+    XMLDocument1.Active := true;
+    //mmResultado.Lines.Text := XMLDocument1.XML.Text;
+
+    raizXML := XMLDocument1.DocumentElement;
+    Result := raizXML;
+
+    //edtLogradouro.Text := raizXML.ChildNodes.FindNode('logradouro').Text;
+    //edtBairro.Text :=  raizXML.ChildNodes.FindNode('bairro').Text;
+    //edtLocalidade.Text := raizXML.ChildNodes.FindNode('localidade').Text;
+    //edtUF.Text := raizXML.ChildNodes.FindNode('uf').Text;
+    //edtIBGE.Text := raizXML.ChildNodes.FindNode('ibge').Text;
+
+    {
+    mmResultado.Lines.Add('Logradouro: ' + raizXML.ChildNodes.FindNode('logradouro').Text);
+    mmResultado.Lines.Add('Bairro: ' + raizXML.ChildNodes.FindNode('bairro').Text);
+    mmResultado.Lines.Add('Localidade: ' + raizXML.ChildNodes.FindNode('localidade').Text);
+    mmResultado.Lines.Add('UF: ' + raizXML.ChildNodes.FindNode('uf').Text);
+    mmResultado.Lines.Add('IBGE: ' + raizXML.ChildNodes.FindNode('ibge').Text);
+    }
+
+  finally
+    XMLDocument1 := nil;
+  end;
 end;
 
 procedure Tcep.GetDados;
