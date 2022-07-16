@@ -1,0 +1,40 @@
+unit unPesquisaCEP;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,unClasseCep,
+  Vcl.DBGrids;
+
+type
+  TfrmConsultaCEP = class(TForm)
+    Label1: TLabel;
+    btnPesquisar: TButton;
+    btnFechar: TButton;
+    DBGrid1: TDBGrid;
+    edtCEP: TEdit;
+    dsCep: TDataSource;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+    oCEP: Tcep;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmConsultaCEP: TfrmConsultaCEP;
+
+implementation
+
+{$R *.dfm}
+
+{ TForm1 }
+
+procedure TfrmConsultaCEP.FormShow(Sender: TObject);
+begin
+  edtCEP.SetFocus;
+end;
+
+end.

@@ -26,8 +26,9 @@ public
   procedure GetDados;
 
   function GetCEP(CEP: string):IXMLNode;
-
   function GetCds: TClientDataSet;
+
+  function getCepBD(NUMEROCEP:string):string;
 
   property codigo: integer read cCodigo write cCodigo;
   property cidade: string read cCidade write cCidade;
@@ -91,31 +92,31 @@ var
 begin
   XMLDocument1 := TXMLDocument.Create(nil);
   try
-    //mmResultado.Clear;
     XMLDocument1.FileName := 'https://viacep.com.br/ws/' + Trim(Cep) + '/xml/';
     XMLDocument1.Active := true;
-    //mmResultado.Lines.Text := XMLDocument1.XML.Text;
-
     raizXML := XMLDocument1.DocumentElement;
     Result := raizXML;
-
-    //edtLogradouro.Text := raizXML.ChildNodes.FindNode('logradouro').Text;
-    //edtBairro.Text :=  raizXML.ChildNodes.FindNode('bairro').Text;
-    //edtLocalidade.Text := raizXML.ChildNodes.FindNode('localidade').Text;
-    //edtUF.Text := raizXML.ChildNodes.FindNode('uf').Text;
-    //edtIBGE.Text := raizXML.ChildNodes.FindNode('ibge').Text;
-
-    {
-    mmResultado.Lines.Add('Logradouro: ' + raizXML.ChildNodes.FindNode('logradouro').Text);
-    mmResultado.Lines.Add('Bairro: ' + raizXML.ChildNodes.FindNode('bairro').Text);
-    mmResultado.Lines.Add('Localidade: ' + raizXML.ChildNodes.FindNode('localidade').Text);
-    mmResultado.Lines.Add('UF: ' + raizXML.ChildNodes.FindNode('uf').Text);
-    mmResultado.Lines.Add('IBGE: ' + raizXML.ChildNodes.FindNode('ibge').Text);
-    }
 
   finally
     XMLDocument1 := nil;
   end;
+end;
+
+function Tcep.getCepBD(NUMEROCEP: string): string;
+var
+  logrouroBD : string;
+  cidadeBD: string;
+  estadoBD : string;
+begin
+  Result:='';
+  dmCep.qryAux.sql.clear;
+  dmCep.qryAux.sql.add('select * from cep where NUMEROCEP ='+QuotedStr(NUMEROCEP));
+  dmCep.qryAux.Open;
+  logrouroBD:= dmCep.qryAux.FieldByName('logradourocep').AsString;
+  cidadeBD:= dmCep.qryAux.FieldByName('cidadecep').AsString;
+  estadoBD:= dmCep.qryAux.FieldByName('estadocep').AsString;
+  Result:= dmCep.qryAux.FieldByName('cidadecep').AsString;
+  dmCep.qryAux.Close;
 end;
 
 procedure Tcep.GetDados;

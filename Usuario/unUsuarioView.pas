@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unPadrao, Data.DB, System.ImageList,
   Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Grids, Vcl.DBGrids,
-  Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,UnClasseUsuarios,
+  Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,UnClasseUsuarios,unClasseCep,unPesquisaCEP,
   Vcl.Samples.Spin;
 
 type
@@ -32,7 +32,7 @@ type
     Label8: TLabel;
     edtUF: TEdit;
     Label11: TLabel;
-    SpeedButton1: TSpeedButton;
+    btnPesquisaCEP: TSpeedButton;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -44,10 +44,13 @@ type
     procedure actExcluirExecute(Sender: TObject);
     procedure PageControlChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure btnPesquisaCEPClick(Sender: TObject);
 
   private
     { Private declarations }
     oUsuario: Tusuario;
+    oCEP : Tcep;
+    codigoCEP : integer;
 
     procedure mostraDados;
     procedure limpaCampos;
@@ -62,6 +65,9 @@ var
 implementation
 
 {$R *.dfm}
+
+uses unDmCep;
+
 
 procedure TfrmUsuarios.actAlterarExecute(Sender: TObject);
 begin
@@ -104,13 +110,30 @@ begin
   oUsuario.codigo := edtCodigo.Value;
   oUsuario.nome := edtNome.Text;
   oUsuario.cpf := edtCPF.Text;
-  oUsuario.cep := 1;
+  oUsuario.cep := codigoCEP;
   oUsuario.login := edtLogin.Text;
   oUsuario.email := edtEmail.Text;
   oUsuario.endereco := edtEndereco.Text;
   oUsuario.senha := edtSenha.Text;
 
   oUsuario.Salvar;
+end;
+
+procedure TfrmUsuarios.btnPesquisaCEPClick(Sender: TObject);
+begin
+  inherited;
+  try
+    Application.CreateForm(TfrmConsultaCEP, frmConsultaCEP);
+    frmConsultaCEP.dsCEP.DataSet:= dmCep.cdsCep;
+    dmCep.cdsCEP.Open;
+    frmConsultaCEP.ShowModal;
+  finally
+    codigoCEP := dmCep.cdsCep.FieldByName('IDCEP').AsInteger;
+    edtEndereco.Text := dmCep.cdsCEP.FieldByName('LOGRADOUROCEP').AsString;
+    edtUF.Text := dmCep.cdsCEP.FieldByName('ESTADOCEP').AsString;
+    edtCidade.Text := dmCep.cdsCEP.FieldByName('CIDADECEP').AsString;
+  end;
+
 end;
 
 procedure TfrmUsuarios.dsCadastroDataChange(Sender: TObject; Field: TField);

@@ -8,13 +8,17 @@ uses
   Vcl.DBGrids;
 
 type
-  TForm1 = class(TForm)
+  TfrmConsultaCEP = class(TForm)
     Label1: TLabel;
-    Button1: TButton;
-    Button2: TButton;
+    btnPesquisar: TButton;
+    btnFechar: TButton;
     DBGrid1: TDBGrid;
     edtCEP: TEdit;
-    dsCEPPesquisa: TDataSource;
+    dsCep: TDataSource;
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnFecharClick(Sender: TObject);
+    procedure btnPesquisarClick(Sender: TObject);
   private
     { Private declarations }
     oCEP: Tcep;
@@ -23,12 +27,36 @@ type
   end;
 
 var
-  Form1: TForm1;
+  frmConsultaCEP: TfrmConsultaCEP;
 
 implementation
 
 {$R *.dfm}
 
 { TForm1 }
+
+procedure TfrmConsultaCEP.btnFecharClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TfrmConsultaCEP.btnPesquisarClick(Sender: TObject);
+begin
+  if (edtCEP.Text <> '') then
+  begin
+    if (not dsCEP.DataSet.Locate('NUMEROCEP',VarArrayOf([edtCEP.Text]),[])) then
+      ShowMessage('CEP não encontrado');
+  end;
+end;
+
+procedure TfrmConsultaCEP.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action:=caFree;
+end;
+
+procedure TfrmConsultaCEP.FormShow(Sender: TObject);
+begin
+  edtCEP.SetFocus;
+end;
 
 end.

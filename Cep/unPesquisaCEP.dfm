@@ -1,4 +1,4 @@
-object Form1: TForm1
+object frmConsultaCEP: TfrmConsultaCEP
   Left = 0
   Top = 0
   Caption = 'Pesquisa de CEP'
@@ -11,6 +11,8 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -26,27 +28,30 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
-  object Button1: TButton
+  object btnPesquisar: TButton
     Left = 288
     Top = 21
     Width = 75
     Height = 25
     Caption = 'Pesquisar'
     TabOrder = 0
+    OnClick = btnPesquisarClick
   end
-  object Button2: TButton
+  object btnFechar: TButton
     Left = 392
     Top = 21
     Width = 75
     Height = 25
     Caption = 'Fechar'
     TabOrder = 1
+    OnClick = btnFecharClick
   end
   object DBGrid1: TDBGrid
     Left = -8
     Top = 72
     Width = 513
     Height = 153
+    DataSource = dsCep
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -61,7 +66,7 @@ object Form1: TForm1
     Height = 21
     TabOrder = 3
   end
-  object dsCEPPesquisa: TDataSource
+  object dsCep: TDataSource
     Left = 440
     Top = 120
   end

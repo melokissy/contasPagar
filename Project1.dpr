@@ -15,7 +15,7 @@ uses
   unClienteView in 'Cliente\unClienteView.pas' {frmClientes},
   unDmCep in 'Cep\unDmCep.pas' {dmCep: TDataModule},
   unClasseCep in 'Cep\unClasseCep.pas',
-  unPesquisaCEP in 'Cep\unPesquisaCEP.pas' {Form1},
+  unPesquisaCEP in 'Cep\unPesquisaCEP.pas' {frmConsultaCEP},
   unCEPView in 'Cep\unCEPView.pas' {frmCEP};
 
 {$R *.res}
@@ -30,7 +30,7 @@ begin
   Application.CreateForm(TdmCliente, dmCliente);
   Application.CreateForm(TfrmClientes, frmClientes);
   Application.CreateForm(TdmCep, dmCep);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmConsultaCEP, frmConsultaCEP);
   Application.CreateForm(TfrmCEP, frmCEP);
   Application.Run;
 end.

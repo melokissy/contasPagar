@@ -283,7 +283,6 @@ inherited frmUsuarios: TfrmUsuarios
     Left = 29
     Top = 84
     Width = 660
-    ActivePage = tsConsulta
     ExplicitLeft = 29
     ExplicitTop = 84
     ExplicitWidth = 660
@@ -426,7 +425,7 @@ inherited frmUsuarios: TfrmUsuarios
         Font.Style = []
         ParentFont = False
       end
-      object SpeedButton1: TSpeedButton
+      object btnPesquisaCEP: TSpeedButton
         Left = 576
         Top = 92
         Width = 50
@@ -475,6 +474,7 @@ inherited frmUsuarios: TfrmUsuarios
           FFFFFFFFFFFFFFFFFFFF}
         ParentShowHint = False
         ShowHint = True
+        OnClick = btnPesquisaCEPClick
       end
       object edtNome: TEdit
         Left = 136
@@ -520,6 +520,7 @@ inherited frmUsuarios: TfrmUsuarios
         Top = 152
         Width = 333
         Height = 21
+        Color = clAppWorkSpace
         TabOrder = 5
       end
       object edtCEP: TMaskEdit
@@ -527,10 +528,8 @@ inherited frmUsuarios: TfrmUsuarios
         Top = 94
         Width = 82
         Height = 21
-        EditMask = '00000\-999;1;_'
-        MaxLength = 9
         TabOrder = 4
-        Text = '     -   '
+        Text = ''
       end
       object edtCodigo: TSpinEdit
         Left = 24
@@ -547,8 +546,7 @@ inherited frmUsuarios: TfrmUsuarios
         Top = 152
         Width = 142
         Height = 21
-        Enabled = False
-        PasswordChar = '*'
+        Color = clAppWorkSpace
         TabOrder = 7
       end
       object edtUF: TEdit
@@ -556,8 +554,7 @@ inherited frmUsuarios: TfrmUsuarios
         Top = 152
         Width = 53
         Height = 21
-        Enabled = False
-        PasswordChar = '*'
+        Color = clAppWorkSpace
         TabOrder = 9
       end
     end

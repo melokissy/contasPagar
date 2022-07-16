@@ -145,7 +145,7 @@
         </DCCReference>
         <DCCReference Include="Cep\unClasseCep.pas"/>
         <DCCReference Include="Cep\unPesquisaCEP.pas">
-            <Form>Form1</Form>
+            <Form>frmConsultaCEP</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Cep\unCEPView.pas">
