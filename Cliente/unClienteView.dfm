@@ -325,9 +325,9 @@ inherited frmClientes: TfrmClientes
       end
       object SpeedButton1: TSpeedButton
         Left = 568
-        Top = 109
+        Top = 102
         Width = 50
-        Height = 22
+        Height = 35
         Glyph.Data = {
           E6040000424DE604000000000000360000002800000014000000140000000100
           180000000000B0040000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -369,6 +369,7 @@ inherited frmClientes: TfrmClientes
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFF}
+        OnClick = SpeedButton1Click
       end
       object Label6: TLabel
         Left = 29
@@ -441,7 +442,7 @@ inherited frmClientes: TfrmClientes
         Top = 174
         Width = 169
         Height = 21
-        Enabled = False
+        Color = clAppWorkSpace
         TabOrder = 2
       end
       object edtEndereco: TEdit
@@ -449,6 +450,7 @@ inherited frmClientes: TfrmClientes
         Top = 174
         Width = 244
         Height = 21
+        Color = clAppWorkSpace
         TabOrder = 3
       end
       object edtUF: TEdit
@@ -456,7 +458,7 @@ inherited frmClientes: TfrmClientes
         Top = 174
         Width = 60
         Height = 21
-        Enabled = False
+        Color = clAppWorkSpace
         TabOrder = 4
       end
       object edtCEP: TMaskEdit

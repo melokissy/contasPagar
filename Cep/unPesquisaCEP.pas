@@ -5,20 +5,22 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,unClasseCep,
-  Vcl.DBGrids;
+  Vcl.DBGrids, Vcl.ComCtrls, Vcl.Buttons;
 
 type
   TfrmConsultaCEP = class(TForm)
     Label1: TLabel;
-    btnPesquisar: TButton;
-    btnFechar: TButton;
     DBGrid1: TDBGrid;
     edtCEP: TEdit;
     dsCep: TDataSource;
+    StatusBar1: TStatusBar;
+    btnPesquisarCEP: TSpeedButton;
+    btnFechar: TSpeedButton;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnFecharClick(Sender: TObject);
-    procedure btnPesquisarClick(Sender: TObject);
+    procedure btnPesquisarCEPClick(Sender: TObject);
+
   private
     { Private declarations }
     oCEP: Tcep;
@@ -35,12 +37,13 @@ implementation
 
 { TForm1 }
 
+
 procedure TfrmConsultaCEP.btnFecharClick(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TfrmConsultaCEP.btnPesquisarClick(Sender: TObject);
+procedure TfrmConsultaCEP.btnPesquisarCEPClick(Sender: TObject);
 begin
   if (edtCEP.Text <> '') then
   begin
@@ -58,5 +61,7 @@ procedure TfrmConsultaCEP.FormShow(Sender: TObject);
 begin
   edtCEP.SetFocus;
 end;
+
+
 
 end.

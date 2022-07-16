@@ -427,9 +427,9 @@ inherited frmUsuarios: TfrmUsuarios
       end
       object btnPesquisaCEP: TSpeedButton
         Left = 576
-        Top = 92
+        Top = 88
         Width = 50
-        Height = 25
+        Height = 35
         Hint = 'Localizar CEP'
         Glyph.Data = {
           E6040000424DE604000000000000360000002800000014000000140000000100

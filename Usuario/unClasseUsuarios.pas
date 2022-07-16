@@ -118,7 +118,6 @@ begin
   dmUsuario.qryAux.Open;
   Result:= dmUsuario.qryAux.FieldByName('idusu').AsString;
   dmUsuario.qryAux.Close;
-  //ShowMessage('Código do usuario: '+Result);
 end;
 
 function Tusuario.getNome(ulogin: string): string;
@@ -139,10 +138,8 @@ begin
   dmUsuario.qryAux.sql.add('select senhausu from usuarios where loginusu ='+QuotedStr(ulogin)
         +'order by nomeusu');
   dmUsuario.qryAux.Open;
-  //Result:= Criptografar(dmUsuario.qryAux.FieldByName('senhausu').AsString);
   Result:= dmUsuario.qryAux.FieldByName('senhausu').AsString;
   dmUsuario.qryAux.Close;
-  //ShowMessage('Senha do usuario: '+Result);
 end;
 
 procedure Tusuario.Incluir;

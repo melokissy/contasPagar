@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unPadrao, Data.DB, System.ImageList,
   Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Grids, Vcl.DBGrids,
-  Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Samples.Spin,UnClasseCliente,
+  Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Samples.Spin,UnClasseCliente,unPesquisaCEP,
   Vcl.Mask;
 
 type
@@ -39,10 +39,12 @@ type
     procedure actAlterarExecute(Sender: TObject);
     procedure actCancelarExecute(Sender: TObject);
     procedure actExcluirExecute(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
 
     oCliente: Tcliente;
+    codigoCEP : integer;
 
     procedure mostraDados;
     procedure limpaCampos;
@@ -57,6 +59,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses unDmCep;
 
 procedure TfrmClientes.actAlterarExecute(Sender: TObject);
 begin
@@ -98,7 +102,7 @@ begin
   oCliente.telefone := edtTelefone.Text;
   oCliente.cpf := edtCPF.Text;
   oCliente.email := edtEmail.Text;
-  oCliente.cep := 1;
+  oCliente.cep := codigoCEP;
   oCliente.endereco := edtEndereco.Text;
 
   oCliente.Salvar;
@@ -150,6 +154,22 @@ begin
   edtCPF.Text := oCliente.cpf;
   //edtCEP.Value := oCliente.cep;
 
+end;
+
+procedure TfrmClientes.SpeedButton1Click(Sender: TObject);
+begin
+  inherited;
+  try
+    Application.CreateForm(TfrmConsultaCEP, frmConsultaCEP);
+    frmConsultaCEP.dsCEP.DataSet:= dmCep.cdsCep;
+    dmCep.cdsCEP.Open;
+    frmConsultaCEP.ShowModal;
+  finally
+    codigoCEP := dmCep.cdsCep.FieldByName('IDCEP').AsInteger;
+    edtEndereco.Text := dmCep.cdsCEP.FieldByName('LOGRADOUROCEP').AsString;
+    edtUF.Text := dmCep.cdsCEP.FieldByName('ESTADOCEP').AsString;
+    edtCidade.Text := dmCep.cdsCEP.FieldByName('CIDADECEP').AsString;
+  end;
 end;
 
 end.
