@@ -252,6 +252,7 @@ inherited frmClientes: TfrmClientes
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000}
   end
   inherited PageControl1: TPageControl
+    ActivePage = tsConsulta
     inherited tsConsulta: TTabSheet
       inherited dbgConsulta: TDBGrid
         DataSource = dsCadastro

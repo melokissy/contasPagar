@@ -16,7 +16,12 @@ uses
   unDmCep in 'Cep\unDmCep.pas' {dmCep: TDataModule},
   unClasseCep in 'Cep\unClasseCep.pas',
   unPesquisaCEP in 'Cep\unPesquisaCEP.pas' {frmConsultaCEP},
-  unCEPView in 'Cep\unCEPView.pas' {frmCEP};
+  unCEPView in 'Cep\unCEPView.pas' {frmCEP},
+  unDmBaixa in 'Baixa\unDmBaixa.pas' {dmBaixa: TDataModule},
+  unClasseBaixa in 'Baixa\unClasseBaixa.pas',
+  unDmTitulo in 'Titulo\unDmTitulo.pas' {dmTitulo: TDataModule},
+  unClasseTitulo in 'Titulo\unClasseTitulo.pas',
+  unTituloView in 'Titulo\unTituloView.pas' {frmTitulo};
 
 {$R *.res}
 
@@ -32,5 +37,8 @@ begin
   Application.CreateForm(TdmCep, dmCep);
   Application.CreateForm(TfrmConsultaCEP, frmConsultaCEP);
   Application.CreateForm(TfrmCEP, frmCEP);
+  Application.CreateForm(TdmBaixa, dmBaixa);
+  Application.CreateForm(TdmTitulo, dmTitulo);
+  Application.CreateForm(TfrmTitulo, frmTitulo);
   Application.Run;
 end.

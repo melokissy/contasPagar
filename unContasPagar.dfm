@@ -4470,25 +4470,41 @@ object frmPrincipal: TfrmPrincipal
     Top = 16
     object actBancos: TAction
       ImageIndex = 3
+      ShortCut = 116
       OnExecute = actBancosExecute
     end
     object actClientes: TAction
       ImageIndex = 4
+      ShortCut = 115
       OnExecute = actClientesExecute
     end
     object actUsuarios: TAction
       ImageIndex = 3
+      ShortCut = 113
       OnExecute = actUsuariosExecute
     end
     object actCEP: TAction
       ImageIndex = 2
+      ShortCut = 114
       OnExecute = actCEPExecute
     end
     object actSaldo: TAction
+      ShortCut = 117
       OnExecute = actSaldoExecute
     end
     object actBaixa: TAction
+      ShortCut = 118
       OnExecute = actBaixaExecute
+    end
+    object actSair: TAction
+      Caption = 'actSair'
+      ShortCut = 119
+      OnExecute = actSairExecute
+    end
+    object actTitulos: TAction
+      Caption = 'Titulos'
+      ShortCut = 120
+      OnExecute = actTitulosExecute
     end
   end
   object MainMenu1: TMainMenu
@@ -4520,13 +4536,16 @@ object frmPrincipal: TfrmPrincipal
       Action = actBaixa
       Caption = 'Baixa'
     end
+    object actTitulos1: TMenuItem
+      Action = actTitulos
+    end
     object Saldo1: TMenuItem
       Action = actSaldo
       Caption = 'Saldo'
     end
     object Sair1: TMenuItem
+      Action = actSair
       Caption = 'Sair'
-      OnClick = Sair1Click
     end
   end
 end

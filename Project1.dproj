@@ -152,6 +152,22 @@
             <Form>frmCEP</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Baixa\unDmBaixa.pas">
+            <Form>dmBaixa</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Baixa\unClasseBaixa.pas"/>
+        <DCCReference Include="Titulo\unDmTitulo.pas">
+            <Form>dmTitulo</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Titulo\unClasseTitulo.pas"/>
+        <DCCReference Include="Titulo\unTituloView.pas">
+            <Form>frmTitulo</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -3,9 +3,9 @@ object frmLogin: TfrmLogin
   Top = 0
   BorderStyle = bsNone
   Caption = 'Sistema de Contas a Pagar'
-  ClientHeight = 344
-  ClientWidth = 582
-  Color = clBtnFace
+  ClientHeight = 332
+  ClientWidth = 575
+  Color = clSilver
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -18,22 +18,9 @@ object frmLogin: TfrmLogin
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
-    Left = 392
-    Top = 62
-    Width = 59
-    Height = 16
-    Caption = 'Bem vindo'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
   object Label2: TLabel
-    Left = 328
-    Top = 94
+    Left = 309
+    Top = 100
     Width = 30
     Height = 16
     Caption = 'Login'
@@ -45,8 +32,8 @@ object frmLogin: TfrmLogin
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 328
-    Top = 150
+    Left = 309
+    Top = 156
     Width = 30
     Height = 16
     Caption = 'Login'
@@ -57,51 +44,32 @@ object frmLogin: TfrmLogin
     Font.Style = []
     ParentFont = False
   end
-  object edtLogin: TEdit
-    Left = 328
-    Top = 116
-    Width = 201
-    Height = 21
-    TabOrder = 0
-  end
-  object edtSenha: TEdit
-    Left = 328
-    Top = 172
-    Width = 201
-    Height = 21
-    PasswordChar = '*'
-    TabOrder = 1
-  end
-  object btnAcessar: TButton
-    Left = 341
-    Top = 232
-    Width = 75
-    Height = 25
-    Caption = 'Acessar'
-    TabOrder = 2
-    OnClick = btnAcessarClick
-  end
-  object btnFechar: TButton
-    Left = 438
-    Top = 232
-    Width = 75
-    Height = 25
-    Caption = 'Fechar'
-    TabOrder = 3
-    OnClick = btnFecharClick
+  object Label1: TLabel
+    Left = 360
+    Top = 70
+    Width = 89
+    Height = 16
+    Caption = 'Seja bem vindo'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 265
-    Height = 344
+    Width = 241
+    Height = 332
     Align = alLeft
     Color = clWhite
     ParentBackground = False
-    TabOrder = 4
+    TabOrder = 0
+    ExplicitHeight = 344
     object Image1: TImage
-      Left = 72
-      Top = 116
+      Left = 64
+      Top = 134
       Width = 105
       Height = 105
       Picture.Data = {
@@ -1068,16 +1036,9 @@ object frmLogin: TfrmLogin
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00}
     end
-    object Label4: TLabel
-      Left = 101
-      Top = 268
-      Width = 52
-      Height = 13
-      Caption = 'Vers'#227'o 1.0'
-    end
     object Label5: TLabel
-      Left = 54
-      Top = 44
+      Left = 46
+      Top = 52
       Width = 150
       Height = 18
       Caption = 'Sistema de Controle'
@@ -1089,8 +1050,8 @@ object frmLogin: TfrmLogin
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 66
-      Top = 60
+      Left = 58
+      Top = 68
       Width = 111
       Height = 18
       Caption = 'Contas a pagar'
@@ -1101,5 +1062,45 @@ object frmLogin: TfrmLogin
       Font.Style = [fsBold]
       ParentFont = False
     end
+    object Label4: TLabel
+      Left = 85
+      Top = 292
+      Width = 52
+      Height = 13
+      Caption = 'Vers'#227'o 1.0'
+    end
+  end
+  object edtLogin: TEdit
+    Left = 309
+    Top = 122
+    Width = 201
+    Height = 21
+    TabOrder = 1
+  end
+  object edtSenha: TEdit
+    Left = 309
+    Top = 178
+    Width = 201
+    Height = 21
+    PasswordChar = '*'
+    TabOrder = 2
+  end
+  object btnAcessar: TButton
+    Left = 325
+    Top = 240
+    Width = 75
+    Height = 25
+    Caption = 'Acessar'
+    TabOrder = 3
+    OnClick = btnAcessarClick
+  end
+  object btnFechar: TButton
+    Left = 422
+    Top = 240
+    Width = 75
+    Height = 25
+    Caption = 'Fechar'
+    TabOrder = 4
+    OnClick = btnFecharClick
   end
 end

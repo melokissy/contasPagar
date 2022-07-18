@@ -1,0 +1,45 @@
+unit unDmTitulo;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Datasnap.Provider, Data.DB, Datasnap.DBClient,Vcl.Dialogs;
+
+type
+  TdmTitulo = class(TDataModule)
+    cdsTitulo: TClientDataSet;
+    dspTitulo: TDataSetProvider;
+    qryTitulo: TFDQuery;
+    qryAux: TFDQuery;
+    cdsTituloIDTITULO: TIntegerField;
+    cdsTituloNUMEROTITULO: TIntegerField;
+    cdsTituloVALORTITULO: TIntegerField;
+    cdsTituloDATAVENCIMENTO: TStringField;
+    cdsTituloBANCOID: TIntegerField;
+    cdsTituloCLIENTEID: TIntegerField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure Incluir;
+    procedure Alterar;
+    procedure Excluir;
+    procedure Salvar;
+    procedure Cancelar;
+  end;
+
+var
+  dmTitulo: TdmTitulo;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses unDMConexao;
+
+{$R *.dfm}
+
+end.

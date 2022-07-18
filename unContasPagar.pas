@@ -34,6 +34,9 @@ type
     CadastrodeUsurios1: TMenuItem;
     CadastrodeCEP1: TMenuItem;
     Sair1: TMenuItem;
+    actSair: TAction;
+    actTitulos: TAction;
+    actTitulos1: TMenuItem;
     procedure actBancosExecute(Sender: TObject);
     procedure actClientesExecute(Sender: TObject);
     procedure actUsuariosExecute(Sender: TObject);
@@ -42,6 +45,8 @@ type
     procedure actBaixaExecute(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure actSairExecute(Sender: TObject);
+    procedure actTitulosExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,7 +60,8 @@ implementation
 
 {$R *.dfm}
 
-uses unUsuarioView, unLoginView, unDmUsuarios, unClienteView, unCEPView;
+uses unUsuarioView, unLoginView, unDmUsuarios, unClienteView, unCEPView,
+  unTituloView;
 
 procedure TfrmPrincipal.actBaixaExecute(Sender: TObject);
 begin
@@ -81,9 +87,22 @@ begin
   frmClientes.ShowModal;
 end;
 
+procedure TfrmPrincipal.actSairExecute(Sender: TObject);
+begin
+  if Application.MessageBox('Deseja realmente fechar o sistema?','Atenção',
+    MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2) = id_yes then
+      Close;
+end;
+
 procedure TfrmPrincipal.actSaldoExecute(Sender: TObject);
 begin
   ShowMessage('TELA DE SALDO');
+end;
+
+procedure TfrmPrincipal.actTitulosExecute(Sender: TObject);
+begin
+  Application.CreateForm(TfrmTitulo, frmTitulo);
+  frmTitulo.ShowModal;
 end;
 
 procedure TfrmPrincipal.actUsuariosExecute(Sender: TObject);
