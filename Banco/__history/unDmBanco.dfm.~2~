@@ -1,0 +1,23 @@
+object dmBancos: TdmBancos
+  OldCreateOrder = False
+  Height = 148
+  Width = 362
+  object cdsBanco: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 280
+    Top = 48
+  end
+  object qryAux: TFDQuery
+    Left = 48
+    Top = 48
+  end
+  object qryBanco: TFDQuery
+    Left = 112
+    Top = 48
+  end
+  object dspBanco: TDataSetProvider
+    Left = 192
+    Top = 48
+  end
+end

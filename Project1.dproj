@@ -168,6 +168,16 @@
             <Form>frmTitulo</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Banco\unDmBanco.pas">
+            <Form>dmBancos</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Banco\unClasseBanco.pas"/>
+        <DCCReference Include="Banco\unBancoView.pas">
+            <Form>frmBanco</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -61,7 +61,7 @@ implementation
 {$R *.dfm}
 
 uses unUsuarioView, unLoginView, unDmUsuarios, unClienteView, unCEPView,
-  unTituloView;
+  unTituloView, unBancoView;
 
 procedure TfrmPrincipal.actBaixaExecute(Sender: TObject);
 begin
@@ -70,9 +70,8 @@ end;
 
 procedure TfrmPrincipal.actBancosExecute(Sender: TObject);
 begin
-  ShowMessage('TESTE BANCO');
-  //Application.CreateForm(TfrmPadrao, frmPadrao);
-  //frmPadrao.ShowModal;
+  Application.CreateForm(TfrmBanco, frmBanco);
+  frmBanco.ShowModal;
 end;
 
 procedure TfrmPrincipal.actCEPExecute(Sender: TObject);

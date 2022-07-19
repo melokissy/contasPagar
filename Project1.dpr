@@ -21,7 +21,10 @@ uses
   unClasseBaixa in 'Baixa\unClasseBaixa.pas',
   unDmTitulo in 'Titulo\unDmTitulo.pas' {dmTitulo: TDataModule},
   unClasseTitulo in 'Titulo\unClasseTitulo.pas',
-  unTituloView in 'Titulo\unTituloView.pas' {frmTitulo};
+  unTituloView in 'Titulo\unTituloView.pas' {frmTitulo},
+  unDmBanco in 'Banco\unDmBanco.pas' {dmBancos: TDataModule},
+  unClasseBanco in 'Banco\unClasseBanco.pas',
+  unBancoView in 'Banco\unBancoView.pas' {frmBanco};
 
 {$R *.res}
 
@@ -40,5 +43,7 @@ begin
   Application.CreateForm(TdmBaixa, dmBaixa);
   Application.CreateForm(TdmTitulo, dmTitulo);
   Application.CreateForm(TfrmTitulo, frmTitulo);
+  Application.CreateForm(TdmBancos, dmBancos);
+  Application.CreateForm(TfrmBanco, frmBanco);
   Application.Run;
 end.

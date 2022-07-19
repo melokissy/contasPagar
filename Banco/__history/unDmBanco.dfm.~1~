@@ -1,0 +1,5 @@
+object dmBancos: TdmBancos
+  OldCreateOrder = False
+  Height = 148
+  Width = 362
+end
