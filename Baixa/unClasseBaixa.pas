@@ -37,7 +37,7 @@ end;
 
 implementation
 
-uses unDmBaixa;
+uses unDmBaixa, unDmUsuarios;
 
 { Tbaixa }
 
@@ -100,10 +100,10 @@ end;
 procedure Tbaixa.Salvar;
 begin
   dmBaixa.cdsBaixaIDBAIXA.Value := bCodigo;
-  dmBaixa.cdsBaixaTITULOID.Value := bTituloId;
-  dmBaixa.cdsBaixaUSUARIOID.Value := bUsuarioId;
-  dmBaixa.cdsBaixaDATABAIXA.Text := bDataBaixa;
-  dmBaixa.cdsBaixaBANCOID.Value := bBancoId;
+  //dmBaixa.cdsBaixaTITULOID.Value := bTituloId;
+  dmBaixa.cdsBaixaUSUARIOID.Value := StrToInt(dmUsuario.LoginID);
+  dmBaixa.cdsBaixaDATABAIXA.Text := DateToStr(Date());
+  //dmBaixa.cdsBaixaBANCOID.Value := bBancoId;
 
   if Assigned(dmBaixa) then
     dmBaixa.Salvar;

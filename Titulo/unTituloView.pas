@@ -24,7 +24,7 @@ type
     edtVencimento: TEdit;
     cbCliente: TDBLookupComboBox;
     dsCliente: TDataSource;
-    DBLookupComboBox1: TDBLookupComboBox;
+    cbxBanco: TDBLookupComboBox;
     dsBanco: TDataSource;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);

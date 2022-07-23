@@ -61,11 +61,12 @@ implementation
 {$R *.dfm}
 
 uses unUsuarioView, unLoginView, unDmUsuarios, unClienteView, unCEPView,
-  unTituloView, unBancoView;
+  unTituloView, unBancoView, unBaixaView;
 
 procedure TfrmPrincipal.actBaixaExecute(Sender: TObject);
 begin
-  ShowMessage('TELA DE BAIXA');
+  Application.CreateForm(TfrmBaixa, frmBaixa);
+  frmBaixa.ShowModal;
 end;
 
 procedure TfrmPrincipal.actBancosExecute(Sender: TObject);

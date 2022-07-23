@@ -1,0 +1,27 @@
+unit unConfirmacaoBaixa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TfrmConfirmacaoBaixa = class(TForm)
+    lblBanco: TLabel;
+    lblSaldo: TLabel;
+    lblValorTit: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmConfirmacaoBaixa: TfrmConfirmacaoBaixa;
+
+implementation
+
+{$R *.dfm}
+
+end.

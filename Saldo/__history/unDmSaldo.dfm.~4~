@@ -1,0 +1,26 @@
+object dmSaldo: TdmSaldo
+  OldCreateOrder = False
+  Height = 178
+  Width = 440
+  object cdsSaldo: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspSaldo'
+    Left = 328
+    Top = 64
+  end
+  object dspSaldo: TDataSetProvider
+    DataSet = qrySaldo
+    Left = 224
+    Top = 64
+  end
+  object qrySaldo: TFDQuery
+    Connection = dmConexao.fdConnection
+    Left = 128
+    Top = 64
+  end
+  object qryAux: TFDQuery
+    Left = 48
+    Top = 64
+  end
+end

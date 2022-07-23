@@ -1,0 +1,41 @@
+unit unDmSaldo;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Datasnap.Provider, Data.DB, Datasnap.DBClient;
+
+type
+  TdmSaldo = class(TDataModule)
+    cdsSaldo: TClientDataSet;
+    dspSaldo: TDataSetProvider;
+    qrySaldo: TFDQuery;
+    qryAux: TFDQuery;
+    cdsSaldoIDSALDO: TIntegerField;
+    cdsSaldoSALDOINICIAL: TIntegerField;
+    cdsSaldoSALDOFINAL: TIntegerField;
+    cdsSaldoENTRADA: TIntegerField;
+    cdsSaldoSAIDA: TIntegerField;
+    cdsSaldoDATASALDO: TIntegerField;
+    cdsSaldoBANCOID: TIntegerField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  dmSaldo: TdmSaldo;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses unDMConexao;
+
+{$R *.dfm}
+
+end.

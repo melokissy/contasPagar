@@ -1,0 +1,45 @@
+object dmBaixa: TdmBaixa
+  OldCreateOrder = False
+  Height = 177
+  Width = 409
+  object cdsBaixa: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspBaixa'
+    Left = 328
+    Top = 72
+    object cdsBaixaIDBAIXA: TIntegerField
+      FieldName = 'IDBAIXA'
+    end
+    object cdsBaixaTITULOID: TIntegerField
+      FieldName = 'TITULOID'
+    end
+    object cdsBaixaUSUARIOID: TIntegerField
+      FieldName = 'USUARIOID'
+    end
+    object cdsBaixaDATABAIXA: TStringField
+      FieldName = 'DATABAIXA'
+      Size = 15
+    end
+    object cdsBaixaBANCOID: TIntegerField
+      FieldName = 'BANCOID'
+    end
+  end
+  object dspBaixa: TDataSetProvider
+    DataSet = qryBaixa
+    Left = 240
+    Top = 72
+  end
+  object qryBaixa: TFDQuery
+    Connection = dmConexao.fdConnection
+    SQL.Strings = (
+      'select * from baixa')
+    Left = 144
+    Top = 72
+  end
+  object qryAux: TFDQuery
+    Connection = dmConexao.fdConnection
+    Left = 48
+    Top = 72
+  end
+end

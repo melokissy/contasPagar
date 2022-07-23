@@ -24,7 +24,11 @@ uses
   unTituloView in 'Titulo\unTituloView.pas' {frmTitulo},
   unDmBanco in 'Banco\unDmBanco.pas' {dmBancos: TDataModule},
   unClasseBanco in 'Banco\unClasseBanco.pas',
-  unBancoView in 'Banco\unBancoView.pas' {frmBanco};
+  unBancoView in 'Banco\unBancoView.pas' {frmBanco},
+  unDmSaldo in 'Saldo\unDmSaldo.pas' {dmSaldo: TDataModule},
+  unClasseSaldo in 'Saldo\unClasseSaldo.pas',
+  unConfirmacaoBaixa in 'Baixa\unConfirmacaoBaixa.pas' {frmConfirmacaoBaixa},
+  unBaixaView in 'Baixa\unBaixaView.pas' {frmBaixa};
 
 {$R *.res}
 
@@ -45,5 +49,8 @@ begin
   Application.CreateForm(TfrmTitulo, frmTitulo);
   Application.CreateForm(TdmBancos, dmBancos);
   Application.CreateForm(TfrmBanco, frmBanco);
+  Application.CreateForm(TdmSaldo, dmSaldo);
+  Application.CreateForm(TfrmConfirmacaoBaixa, frmConfirmacaoBaixa);
+  Application.CreateForm(TfrmBaixa, frmBaixa);
   Application.Run;
 end.
