@@ -3,13 +3,14 @@ unit unClasseBanco;
 interface
 
 uses
-System.SysUtils, System.Classes, Vcl.Dialogs, Datasnap.DBClient, Data.DB;
+System.SysUtils, System.Classes, Vcl.Dialogs, Datasnap.DBClient, Data.DB,System.Generics.Collections;
 
 type Tbanco = class
   private
     bCodigo: integer;
     bNome: string;
     bNumero: string;
+    FListaBancos : TObjectList<Tbanco>;
 
 public
   constructor Create;
@@ -27,6 +28,10 @@ public
   property codigo: integer read bCodigo write bCodigo;
   property numero: string read bNumero write bNumero;
   property nome: string read bNome write bNome;
+
+  property ListaBancos : TObjectList<Tbanco> read FListaBancos write FListaBancos;
+
+  procedure addItem(bnome:string; bnumero:string);
 end;
 
 implementation
@@ -34,6 +39,17 @@ implementation
 { Tbanco }
 
 uses unDmBanco;
+
+procedure Tbanco.addItem(bnome, bnumero: string);
+var
+  i : integer;
+begin
+  FListaBancos.Add(Tbanco.Create);
+  i := FListaBancos.count -1;
+
+  FListaBancos[i].bNumero :=  dmBancos.cdsBancoCODIGOBANCO.Text;
+  FListaBancos[i].bNome :=  dmBancos.cdsBancoNOMEBANCO.Text;
+end;
 
 procedure Tbanco.Alterar;
 begin
@@ -49,6 +65,7 @@ end;
 
 constructor Tbanco.Create;
 begin
+  FListaBancos := TObjectList<Tbanco>.Create;
   try
     dmBancos := TdmBancos.Create(nil);
     dmBancos.cdsBanco.Open;

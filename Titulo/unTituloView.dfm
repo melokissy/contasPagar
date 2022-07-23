@@ -311,7 +311,7 @@ inherited frmTitulo: TfrmTitulo
         ParentFont = False
       end
       object Label6: TLabel
-        Left = 40
+        Left = 328
         Top = 85
         Width = 34
         Height = 16
@@ -324,7 +324,7 @@ inherited frmTitulo: TfrmTitulo
         ParentFont = False
       end
       object Label7: TLabel
-        Left = 208
+        Left = 40
         Top = 85
         Width = 39
         Height = 16
@@ -360,38 +360,55 @@ inherited frmTitulo: TfrmTitulo
         Height = 21
         TabOrder = 2
       end
-      object edtBanco: TSpinEdit
-        Left = 40
-        Top = 107
-        Width = 121
-        Height = 22
-        MaxValue = 0
-        MinValue = 0
-        TabOrder = 3
-        Value = 0
-      end
-      object edtCliente: TSpinEdit
-        Left = 208
-        Top = 107
-        Width = 121
-        Height = 22
-        MaxValue = 0
-        MinValue = 0
-        TabOrder = 4
-        Value = 0
-      end
       object edtVencimento: TEdit
         Left = 482
         Top = 44
         Width = 95
         Height = 21
+        TabOrder = 3
+      end
+      object cbCliente: TDBLookupComboBox
+        Left = 40
+        Top = 107
+        Width = 241
+        Height = 21
+        DataField = 'CLIENTEID'
+        DataSource = dsCadastro
+        KeyField = 'IDCLI'
+        ListField = 'NOMECLI'
+        ListSource = dsCliente
+        TabOrder = 4
+      end
+      object DBLookupComboBox1: TDBLookupComboBox
+        Left = 328
+        Top = 107
+        Width = 241
+        Height = 21
+        DataField = 'BANCOID'
+        DataSource = dsCadastro
+        KeyField = 'IDBANCO'
+        ListField = 'NOMEBANCO'
+        ListSource = dsBanco
         TabOrder = 5
       end
     end
   end
   object dsCadastro: TDataSource
+    DataSet = dmTitulo.qryTitulo
     OnDataChange = dsCadastroDataChange
     Left = 504
+    Top = 24
+  end
+  object dsCliente: TDataSource
+    DataSet = dmCliente.qryCliente
+    OnDataChange = dsClienteDataChange
+    Left = 440
+    Top = 24
+  end
+  object dsBanco: TDataSource
+    DataSet = dmBancos.qryBanco
+    OnDataChange = dsBancoDataChange
+    Left = 376
     Top = 24
   end
 end

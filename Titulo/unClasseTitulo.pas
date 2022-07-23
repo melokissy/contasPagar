@@ -106,8 +106,7 @@ begin
   dmTitulo.cdsTituloNUMEROTITULO.Value := tNumero;
   dmTitulo.cdsTituloVALORTITULO.Value := tValor;
   dmTitulo.cdsTituloDATAVENCIMENTO.Text := tDataVencimento;
-  dmTitulo.cdsTituloBANCOID.Value := tBancoId;
-  dmTitulo.cdsTituloCLIENTEID.Value := tClienteId;
+  //dmTitulo.cdsTituloBANCOID.Value := tBancoId;
 
   if Assigned(dmTitulo) then
     dmTitulo.Salvar;

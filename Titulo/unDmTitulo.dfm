@@ -35,6 +35,7 @@ object dmTitulo: TdmTitulo
     Top = 48
   end
   object qryTitulo: TFDQuery
+    Active = True
     Connection = dmConexao.fdConnection
     SQL.Strings = (
       'select * from titulos')

@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unPadrao, Data.DB, System.ImageList,
   Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Grids, Vcl.DBGrids,unClasseTitulo,
-  Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Samples.Spin;
+  Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Samples.Spin,System.Generics.Collections,
+  Vcl.DBCtrls,unDmCliente,unDmTitulo,unClasseCliente,unClasseBanco,unDmBanco;
 
 type
   TfrmTitulo = class(TfrmPadrao)
@@ -19,10 +20,12 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    edtBanco: TSpinEdit;
-    edtCliente: TSpinEdit;
     Label7: TLabel;
     edtVencimento: TEdit;
+    cbCliente: TDBLookupComboBox;
+    dsCliente: TDataSource;
+    DBLookupComboBox1: TDBLookupComboBox;
+    dsBanco: TDataSource;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure dsCadastroDataChange(Sender: TObject; Field: TField);
@@ -31,14 +34,21 @@ type
     procedure actAlterarExecute(Sender: TObject);
     procedure actExcluirExecute(Sender: TObject);
     procedure actCancelarExecute(Sender: TObject);
+    procedure dsClienteDataChange(Sender: TObject; Field: TField);
+    procedure dsBancoDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
     oTitulo: Ttitulo;
+    oCliente : TCliente;
+    oBanco : TBanco;
+    dmCliente : unDmCliente.TdmCliente;
+    dmTitulo : unDmTitulo.TdmTitulo;
 
     procedure mostraDados;
     procedure limpaCampos;
   public
     { Public declarations }
+
   end;
 
 var
@@ -47,7 +57,6 @@ var
 implementation
 
 {$R *.dfm}
-
 
 { TfrmTitulo }
 
@@ -89,10 +98,18 @@ begin
   oTitulo.numero := StrToInt(edtNumero.Text);
   oTitulo.valor := StrToFloat(edtValor.Text);
   oTitulo.dataVencimento := edtVencimento.Text;
-  oTitulo.banco := edtBanco.Value;
-  oTitulo.cliente := edtCliente.Value;
 
   oTitulo.Salvar;
+end;
+
+procedure TfrmTitulo.dsBancoDataChange(Sender: TObject; Field: TField);
+begin
+  inherited;
+  if Assigned (oBanco) then
+  begin
+    if (dsBanco.DataSet.State=dsBrowse) then
+      mostraDados;
+  end;
 end;
 
 procedure TfrmTitulo.dsCadastroDataChange(Sender: TObject; Field: TField);
@@ -105,11 +122,23 @@ begin
   end;
 end;
 
+procedure TfrmTitulo.dsClienteDataChange(Sender: TObject; Field: TField);
+begin
+  inherited;
+  if Assigned (oCliente) then
+  begin
+    if (dsCliente.DataSet.State=dsBrowse) then
+      mostraDados;
+  end;
+end;
+
 procedure TfrmTitulo.FormCreate(Sender: TObject);
 begin
   inherited;
+
   oTitulo := TTitulo.Create;
   dsCadastro.DataSet:= oTitulo.GetCds;
+
 end;
 
 procedure TfrmTitulo.FormShow(Sender: TObject);
@@ -136,7 +165,7 @@ begin
   edtNumero.Text := IntToStr(oTitulo.numero);
   edtValor.Text := formatfloat('#.##',valor);  //valor formatado mostrando somente duas casas decimais após a virgula
   edtVencimento.Text := oTitulo.dataVencimento;
-  edtBanco.Value := oTitulo.banco;
+  //edtBanco.Value := oTitulo.banco;
 end;
 
 end.

@@ -27,6 +27,7 @@ object dmBancos: TdmBancos
     Top = 48
   end
   object qryBanco: TFDQuery
+    Active = True
     Connection = dmConexao.fdConnection
     SQL.Strings = (
       'select * from bancos')

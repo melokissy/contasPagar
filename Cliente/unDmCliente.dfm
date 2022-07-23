@@ -42,6 +42,7 @@ object dmCliente: TdmCliente
     Top = 64
   end
   object qryCliente: TFDQuery
+    Active = True
     Connection = dmConexao.fdConnection
     SQL.Strings = (
       'select * from clientes')
