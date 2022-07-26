@@ -1,5 +1,0 @@
-object dmSaldo: TdmSaldo
-  OldCreateOrder = False
-  Height = 178
-  Width = 440
-end

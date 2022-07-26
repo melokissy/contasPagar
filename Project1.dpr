@@ -28,7 +28,8 @@ uses
   unDmSaldo in 'Saldo\unDmSaldo.pas' {dmSaldo: TDataModule},
   unClasseSaldo in 'Saldo\unClasseSaldo.pas',
   unConfirmacaoBaixa in 'Baixa\unConfirmacaoBaixa.pas' {frmConfirmacaoBaixa},
-  unBaixaView in 'Baixa\unBaixaView.pas' {frmBaixa};
+  unBaixaView in 'Baixa\unBaixaView.pas' {frmBaixa},
+  unSaldoView in 'Saldo\unSaldoView.pas' {frmSaldo};
 
 {$R *.res}
 
@@ -52,5 +53,6 @@ begin
   Application.CreateForm(TdmSaldo, dmSaldo);
   Application.CreateForm(TfrmConfirmacaoBaixa, frmConfirmacaoBaixa);
   Application.CreateForm(TfrmBaixa, frmBaixa);
+  Application.CreateForm(TfrmSaldo, frmSaldo);
   Application.Run;
 end.

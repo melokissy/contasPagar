@@ -27,6 +27,7 @@ public
   procedure GetDados;
 
   function GetCds: TClientDataSet;
+  function getValor(numeroTit: string): string;
 
   property codigo: integer read tCodigo write tCodigo;
   property numero: integer read tNumero write tNumero;
@@ -110,6 +111,17 @@ begin
 
   if Assigned(dmTitulo) then
     dmTitulo.Salvar;
+end;
+
+//retorna o id atraves do login
+function Ttitulo.getValor(numeroTit: string): string;
+begin
+  Result:='';
+  dmTitulo.qryAux.sql.clear;
+  dmTitulo.qryAux.sql.add('select VALORTITULO from titulos where numerotitulo ='+QuotedStr(numeroTit));
+  dmTitulo.qryAux.Open;
+  Result:= dmTitulo.qryAux.FieldByName('VALORTITULO').AsString;
+  dmTitulo.qryAux.Close;
 end;
 
 end.

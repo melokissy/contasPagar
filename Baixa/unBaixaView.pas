@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unPadrao, Data.DB, System.ImageList,
-  Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Grids, Vcl.DBGrids,
+  Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Grids, Vcl.DBGrids,unClasseTitulo,
   Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Samples.Spin,unClasseBaixa,
   Vcl.DBCtrls;
 
@@ -17,9 +17,10 @@ type
     edtCodigo: TSpinEdit;
     Label2: TLabel;
     Label3: TLabel;
-    cbxTitulo: TDBLookupComboBox;
     cbxBanco: TDBLookupComboBox;
     Label4: TLabel;
+    lblValor: TLabel;
+    cbxTitulo: TDBLookupComboBox;
     procedure actSalvarExecute(Sender: TObject);
     procedure actFecharExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -29,9 +30,15 @@ type
     procedure actAlterarExecute(Sender: TObject);
     procedure actExcluirExecute(Sender: TObject);
     procedure actCancelarExecute(Sender: TObject);
+    procedure cbxTituloExit(Sender: TObject);
+    procedure CarregarLabelValorTit;
+    procedure cbxTituloKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure cbxTituloClick(Sender: TObject);
   private
     { Private declarations }
     oBaixa : TBaixa;
+    oTitulo : Ttitulo;
     procedure mostraDados;
     //procedure habilitaCampos;
   public
@@ -87,6 +94,36 @@ begin
   inherited;
   oBaixa.codigo := edtCodigo.Value;
   oBaixa.Salvar;
+end;
+
+procedure TfrmBaixa.CarregarLabelValorTit;
+var
+  numeroTit : string;
+  valorTit : string;
+begin
+  inherited;
+  numeroTit := cbxTitulo.ListSource.DataSet.FieldByName(cbxTitulo.ListField).Value;
+  valorTit := oTitulo.getValor(numeroTit);
+  lblValor.Caption := 'Valor do título: R$ '+formatfloat('#.##',StrToFloat(valorTit));
+
+end;
+
+procedure TfrmBaixa.cbxTituloClick(Sender: TObject);
+begin
+  CarregarLabelValorTit;
+
+end;
+
+procedure TfrmBaixa.cbxTituloExit(Sender: TObject);
+begin
+  CarregarLabelValorTit;
+end;
+
+procedure TfrmBaixa.cbxTituloKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+
+begin
+  CarregarLabelValorTit;
 end;
 
 procedure TfrmBaixa.dsBaixaDataChange(Sender: TObject; Field: TField);

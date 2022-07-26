@@ -88,8 +88,8 @@ end;
 procedure Tsaldo.GetDados;
 begin
     sCodigo := dmSaldo.cdsSaldoIDSALDO.Value;
-    sSaldoFinal:= dmSaldo.cdsSaldoSALDOINICIAL.Value;
-    sSaldoInicial := dmSaldo.cdsSaldoSALDOFINAL.Value;
+    sSaldoFinal:= dmSaldo.cdsSaldoSALDOFINAL.Value;
+    sSaldoInicial := dmSaldo.cdsSaldoSALDOINICIAL.Value;
     sValorEntrada := dmSaldo.cdsSaldoENTRADA.Value;
     sValorSaida := dmSaldo.cdsSaldoSAIDA.Value;
     sData := dmSaldo.cdsSaldoDATASALDO.Text;
@@ -105,12 +105,11 @@ end;
 procedure Tsaldo.Salvar;
 begin
   dmSaldo.cdsSaldoIDSALDO.Value := sCodigo;
-  dmSaldo.cdsSaldoBANCOID.Value := sBancoId;
   dmSaldo.cdsSaldoSALDOINICIAL.Value := sSaldoInicial;
   dmSaldo.cdsSaldoSALDOFINAL.Value := sSaldoFinal;
   dmSaldo.cdsSaldoENTRADA.Value := sValorEntrada;
   dmSaldo.cdsSaldoSAIDA.Value := sValorSaida;
-  dmSaldo.cdsSaldoDATASALDO.Text := sData;
+  dmSaldo.cdsSaldoDATASALDO.Text := DateToStr(Date());
 
   if Assigned(dmSaldo) then
     dmSaldo.Salvar;

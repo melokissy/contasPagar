@@ -61,7 +61,7 @@ implementation
 {$R *.dfm}
 
 uses unUsuarioView, unLoginView, unDmUsuarios, unClienteView, unCEPView,
-  unTituloView, unBancoView, unBaixaView;
+  unTituloView, unBancoView, unBaixaView, unSaldoView;
 
 procedure TfrmPrincipal.actBaixaExecute(Sender: TObject);
 begin
@@ -96,7 +96,8 @@ end;
 
 procedure TfrmPrincipal.actSaldoExecute(Sender: TObject);
 begin
-  ShowMessage('TELA DE SALDO');
+  Application.CreateForm(TfrmSaldo, frmSaldo);
+  frmSaldo.ShowModal;
 end;
 
 procedure TfrmPrincipal.actTitulosExecute(Sender: TObject);

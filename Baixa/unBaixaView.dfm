@@ -297,6 +297,18 @@ inherited frmBaixa: TfrmBaixa
         Font.Style = []
         ParentFont = False
       end
+      object lblValor: TLabel
+        Left = 353
+        Top = 52
+        Width = 0
+        Height = 16
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
       object edtCodigo: TSpinEdit
         Left = 40
         Top = 51
@@ -306,18 +318,6 @@ inherited frmBaixa: TfrmBaixa
         MinValue = 0
         TabOrder = 0
         Value = 0
-      end
-      object cbxTitulo: TDBLookupComboBox
-        Left = 174
-        Top = 51
-        Width = 145
-        Height = 21
-        DataField = 'TITULOID'
-        DataSource = dsBaixa
-        KeyField = 'IDTITULO'
-        ListField = 'NUMEROTITULO'
-        ListSource = dsTitulo
-        TabOrder = 1
       end
       object cbxBanco: TDBLookupComboBox
         Left = 40
@@ -329,7 +329,22 @@ inherited frmBaixa: TfrmBaixa
         KeyField = 'IDBANCO'
         ListField = 'NOMEBANCO'
         ListSource = dsBanco
+        TabOrder = 1
+      end
+      object cbxTitulo: TDBLookupComboBox
+        Left = 174
+        Top = 51
+        Width = 145
+        Height = 21
+        DataField = 'TITULOID'
+        DataSource = dsBaixa
+        KeyField = 'IDTITULO'
+        ListField = 'NUMEROTITULO'
+        ListSource = dsTitulo
         TabOrder = 2
+        OnClick = cbxTituloClick
+        OnExit = cbxTituloExit
+        OnKeyDown = cbxTituloKeyDown
       end
     end
   end
