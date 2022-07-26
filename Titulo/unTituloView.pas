@@ -48,7 +48,7 @@ type
     procedure limpaCampos;
   public
     { Public declarations }
-
+    qtdRegistros:integer;
   end;
 
 var
@@ -94,7 +94,7 @@ procedure TfrmTitulo.actSalvarExecute(Sender: TObject);
 begin
   inherited;
 
-  oTitulo.codigo := edtCodigo.Value;
+  oTitulo.codigo := qtdRegistros+1;
   oTitulo.numero := StrToInt(edtNumero.Text);
   oTitulo.valor := StrToFloat(edtValor.Text);
   oTitulo.dataVencimento := edtVencimento.Text;
@@ -120,6 +120,7 @@ begin
     if (dsCadastro.DataSet.State=dsBrowse) then
       mostraDados;
   end;
+    qtdRegistros := dbgConsulta.DataSource.DataSet.RecordCount;
 end;
 
 procedure TfrmTitulo.dsClienteDataChange(Sender: TObject; Field: TField);

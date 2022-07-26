@@ -51,6 +51,7 @@ type
 
   public
     { Public declarations }
+    qtdRegistros : integer;
   end;
 
 var
@@ -97,7 +98,7 @@ procedure TfrmClientes.actSalvarExecute(Sender: TObject);
 begin
   inherited;
 
-  oCliente.codigo := edtCodigo.Value;
+  oCliente.codigo := (qtdRegistros+1);
   oCliente.nome := edtNome.Text;
   oCliente.telefone := edtTelefone.Text;
   oCliente.cpf := edtCPF.Text;
@@ -117,6 +118,8 @@ begin
     if (dsCadastro.DataSet.State=dsBrowse) then
       mostraDados;
   end;
+
+  qtdRegistros := dbgConsulta.DataSource.DataSet.RecordCount;
 end;
 
 procedure TfrmClientes.FormCreate(Sender: TObject);
@@ -152,7 +155,6 @@ begin
   edtEndereco.Text := oCliente.endereco;
   edtEmail.Text := oCliente.email;
   edtCPF.Text := oCliente.cpf;
-  //edtCEP.Value := oCliente.cep;
 
 end;
 

@@ -295,12 +295,16 @@ inherited frmUsuarios: TfrmUsuarios
     end
     inherited tsCadastro: TTabSheet
       ExplicitWidth = 652
+      inherited btnSalvar: TSpeedButton
+        Left = 569
+        ExplicitLeft = 569
+      end
       object Label2: TLabel
         Left = 24
         Top = 16
-        Width = 12
+        Width = 39
         Height = 16
-        Caption = 'ID'
+        Caption = 'C'#243'digo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -13
@@ -536,6 +540,7 @@ inherited frmUsuarios: TfrmUsuarios
         Top = 38
         Width = 89
         Height = 22
+        Enabled = False
         MaxValue = 0
         MinValue = 0
         TabOrder = 0

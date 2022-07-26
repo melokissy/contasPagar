@@ -41,6 +41,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 
   private
     { Private declarations }
@@ -130,6 +131,14 @@ end;
 procedure TfrmPadrao.FormCreate(Sender: TObject);
 begin
   Application.OnHint := DisplayHint;
+  KeyPreview := True;
+end;
+
+procedure TfrmPadrao.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (Key = VK_ESCAPE) then
+    Close;
 end;
 
 procedure TfrmPadrao.FormShow(Sender: TObject);

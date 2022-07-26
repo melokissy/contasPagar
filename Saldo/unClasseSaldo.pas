@@ -26,7 +26,11 @@ public
   procedure Salvar;
   procedure GetDados;
 
+  procedure descontaSaldo(bancoId: string; valorTit: double);
+ // procedure somaSaldo(bancoId: string; valorTit: double);
+
   function GetCds: TClientDataSet;
+  function getSaldo(bancoId: string): string;
 
   property codigo: integer read sCodigo write sCodigo;
   property saldoInicial: double read sSaldoInicial write sSaldoInicial;
@@ -48,6 +52,29 @@ procedure Tsaldo.Alterar;
 begin
   if Assigned(dmSaldo) then
   dmSaldo.Alterar;
+end;
+
+procedure Tsaldo.descontaSaldo(bancoId: string; valorTit: double);
+var
+  saldoAtualizado: double;
+  saldoIni : double;
+begin
+  saldoIni := StrToFloat(getSaldo(bancoId));
+  saldoAtualizado := saldoIni - valorTit;
+
+  dmSaldo.Incluir;
+
+  dmSaldo.cdsSaldoIDSALDO.Value := 10;
+  dmSaldo.cdsSaldoSALDOINICIAL.Value := saldoIni;
+  dmSaldo.cdsSaldoBANCOID.Value := StrToInt(bancoId);
+  dmSaldo.cdsSaldoSALDOFINAL.Value := saldoAtualizado;
+  dmSaldo.cdsSaldoENTRADA.Value := 0;
+  dmSaldo.cdsSaldoSAIDA.Value := valorTit;
+  dmSaldo.cdsSaldoDATASALDO.Text := DateToStr(Date());
+
+  if Assigned(dmSaldo) then
+    dmSaldo.Salvar;
+
 end;
 
 procedure Tsaldo.Cancelar;
@@ -96,10 +123,20 @@ begin
     sBancoId := dmSaldo.cdsSaldoBANCOID.Value;
 end;
 
+function Tsaldo.getSaldo(bancoId: string): string;
+begin
+  Result:='';
+  dmSaldo.qryAux.sql.clear;
+  dmSaldo.qryAux.sql.add('select SALDOFINAL from saldo where idsaldo = (select max(idsaldo) from saldo) and bancoid='+QuotedStr(bancoId));
+  dmSaldo.qryAux.Open;
+  Result:= dmSaldo.qryAux.FieldByName('SALDOFINAL').AsString;
+  dmSaldo.qryAux.Close;
+end;
+
 procedure Tsaldo.Incluir;
 begin
   if Assigned(dmSaldo) then
-  dmSaldo.Incluir;
+    dmSaldo.Incluir;
 end;
 
 procedure Tsaldo.Salvar;

@@ -42,6 +42,7 @@ type
     procedure limpaCampos;
   public
     { Public declarations }
+    qtdRegistros:integer;
   end;
 
 var
@@ -90,7 +91,7 @@ end;
 procedure TfrmSaldo.actSalvarExecute(Sender: TObject);
 begin
   inherited;
-  oSaldo.codigo := edtCodigo.Value;
+  oSaldo.codigo := qtdRegistros+1;
   oSaldo.entrada := StrToFloat(edtEntrada.Text);
   osaldo.saida := StrToFloat(edtSaida.Text);
   osaldo.saldoInicial := StrToFloat(edtSaldoInicial.Text);
@@ -107,6 +108,7 @@ begin
     if (dsSaldo.DataSet.State=dsBrowse) then
       mostraDados;
   end;
+    qtdRegistros := dbgConsulta.DataSource.DataSet.RecordCount;
 end;
 
 procedure TfrmSaldo.FormCreate(Sender: TObject);

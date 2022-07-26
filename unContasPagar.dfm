@@ -4536,26 +4536,26 @@ object frmPrincipal: TfrmPrincipal
     Top = 16
     object actBancos: TAction
       ImageIndex = 3
-      ShortCut = 116
+      ShortCut = 113
       OnExecute = actBancosExecute
     end
     object actClientes: TAction
       ImageIndex = 4
-      ShortCut = 115
+      ShortCut = 114
       OnExecute = actClientesExecute
     end
     object actUsuarios: TAction
       ImageIndex = 3
-      ShortCut = 113
+      ShortCut = 115
       OnExecute = actUsuariosExecute
     end
     object actCEP: TAction
       ImageIndex = 2
-      ShortCut = 114
+      ShortCut = 116
       OnExecute = actCEPExecute
     end
     object actSaldo: TAction
-      ShortCut = 117
+      ShortCut = 119
       OnExecute = actSaldoExecute
     end
     object actBaixa: TAction
@@ -4564,11 +4564,11 @@ object frmPrincipal: TfrmPrincipal
     end
     object actSair: TAction
       Caption = 'actSair'
-      ShortCut = 119
+      ShortCut = 121
       OnExecute = actSairExecute
     end
     object actTitulos: TAction
-      ShortCut = 120
+      ShortCut = 117
       OnExecute = actTitulosExecute
     end
   end

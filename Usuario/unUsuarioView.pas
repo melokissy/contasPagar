@@ -57,6 +57,7 @@ type
 
   public
     { Public declarations }
+    qtdRegistros : integer;
   end;
 
 var
@@ -107,7 +108,7 @@ procedure TfrmUsuarios.actSalvarExecute(Sender: TObject);
 begin
   inherited;
 
-  oUsuario.codigo := edtCodigo.Value;
+  oUsuario.codigo := (qtdRegistros+1);
   oUsuario.nome := edtNome.Text;
   oUsuario.cpf := edtCPF.Text;
   oUsuario.cep := codigoCEP;
@@ -145,6 +146,7 @@ begin
       mostraDados;
   end;
 
+  qtdRegistros := dbgConsulta.DataSource.DataSet.RecordCount;
 end;
 
 procedure TfrmUsuarios.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -185,7 +187,6 @@ begin
   edtLogin.Text := oUsuario.login;
   edtEmail.Text := oUsuario.email;
   edtSenha.Text := oUsuario.senha;
-  //edtCEP.Text := oUsuario.cep;
   edtCPF.Text := oUsuario.cpf;
   edtEndereco.Text := oUsuario.endereco;
 end;

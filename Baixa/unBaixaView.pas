@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unPadrao, Data.DB, System.ImageList,
   Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Grids, Vcl.DBGrids,unClasseTitulo,
-  Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Samples.Spin,unClasseBaixa,
+  Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Samples.Spin,unClasseBaixa,unClasseBanco,unClasseSaldo,
   Vcl.DBCtrls;
 
 type
@@ -21,6 +21,7 @@ type
     Label4: TLabel;
     lblValor: TLabel;
     cbxTitulo: TDBLookupComboBox;
+    lblSaldoBanco: TLabel;
     procedure actSalvarExecute(Sender: TObject);
     procedure actFecharExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -32,17 +33,27 @@ type
     procedure actCancelarExecute(Sender: TObject);
     procedure cbxTituloExit(Sender: TObject);
     procedure CarregarLabelValorTit;
+    procedure CarregarLabelSaldoBanco;
     procedure cbxTituloKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure cbxTituloClick(Sender: TObject);
+    procedure cbxBancoKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure cbxBancoExit(Sender: TObject);
+    procedure cbxBancoClick(Sender: TObject);
   private
     { Private declarations }
     oBaixa : TBaixa;
+    oBanco : Tbanco;
+    oSaldo : Tsaldo;
     oTitulo : Ttitulo;
     procedure mostraDados;
-    //procedure habilitaCampos;
   public
     { Public declarations }
+    saldoBanco : double;
+    valorTit : double;
+    codidoBanco : string;
+    qtdRegistros:integer;
   end;
 
 var
@@ -90,22 +101,71 @@ begin
 end;
 
 procedure TfrmBaixa.actSalvarExecute(Sender: TObject);
+var
+  nomeBanco : string;
+begin
+  nomeBanco := cbxBanco.ListSource.DataSet.FieldByName(cbxBanco.ListField).Value;
+  codidoBanco := oBanco.getBancoId(nomeBanco);
+  saldoBanco := StrToFloat(oSaldo.getSaldo(codidoBanco));
+
+  if saldoBanco > valorTit then
+  begin
+    oBaixa.codigo := qtdRegistros+1;
+    oBaixa.Salvar;
+    oSaldo.descontaSaldo(codidoBanco,valorTit);
+  end
+  else
+  begin
+    ShowMessage('O banco selecionado não possui saldo suficiente');
+    actCancelarExecute(Sender);
+  end;
+end;
+
+procedure TfrmBaixa.CarregarLabelSaldoBanco;
+var
+  nomeBanco : string;
+  saldo : string;
 begin
   inherited;
-  oBaixa.codigo := edtCodigo.Value;
-  oBaixa.Salvar;
+  nomeBanco := cbxBanco.ListSource.DataSet.FieldByName(cbxBanco.ListField).Value;
+  codidoBanco := oBanco.getBancoId(nomeBanco);
+  saldo := oSaldo.getSaldo(codidoBanco);
+
+  if saldo <> '' then
+  begin
+    saldoBanco := StrToFloat(saldo);
+    lblSaldoBanco.Caption := 'Saldo do banco: R$ '+formatfloat('#.##',saldoBanco);
+    exit;
+  end;
+    lblSaldoBanco.Caption := 'Saldo do banco: R$ 0,00';
+
 end;
 
 procedure TfrmBaixa.CarregarLabelValorTit;
 var
   numeroTit : string;
-  valorTit : string;
 begin
   inherited;
   numeroTit := cbxTitulo.ListSource.DataSet.FieldByName(cbxTitulo.ListField).Value;
-  valorTit := oTitulo.getValor(numeroTit);
-  lblValor.Caption := 'Valor do título: R$ '+formatfloat('#.##',StrToFloat(valorTit));
+  valorTit := StrToFloat(oTitulo.getValor(numeroTit));
+  lblValor.Caption := 'Valor do título: R$ '+formatfloat('#.##',valorTit);
 
+end;
+
+procedure TfrmBaixa.cbxBancoClick(Sender: TObject);
+begin
+  CarregarLabelSaldoBanco;
+end;
+
+procedure TfrmBaixa.cbxBancoExit(Sender: TObject);
+begin
+  CarregarLabelSaldoBanco;
+end;
+
+procedure TfrmBaixa.cbxBancoKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  CarregarLabelSaldoBanco;
 end;
 
 procedure TfrmBaixa.cbxTituloClick(Sender: TObject);
@@ -134,6 +194,7 @@ begin
     if (dsBaixa.DataSet.State=dsBrowse) then
       mostraDados;
   end;
+    qtdRegistros := dbgConsulta.DataSource.DataSet.RecordCount;
 end;
 
 procedure TfrmBaixa.FormCreate(Sender: TObject);

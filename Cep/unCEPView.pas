@@ -40,6 +40,7 @@ type
   public
     { Public declarations }
     raizXML: IXMLNode;
+    qtdRegistros: integer;
   end;
 
 var
@@ -82,7 +83,7 @@ end;
 procedure TfrmCEP.actSalvarExecute(Sender: TObject);
 begin
   inherited;
-  oCEP.codigo := edtCodigo.Value;
+  oCEP.codigo := qtdRegistros+1;
   oCEP.logradouro := edtLogradouro.Text;
   oCEP.estado := edtUF.Text;
   oCEP.numero := edtCEPNumero.Text;
@@ -108,6 +109,7 @@ begin
     if (dsCadastro.DataSet.State=dsBrowse) then
       mostraDados;
   end;
+    qtdRegistros := dbgConsulta.DataSource.DataSet.RecordCount;
 end;
 
 procedure TfrmCEP.FormCreate(Sender: TObject);

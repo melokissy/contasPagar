@@ -24,6 +24,7 @@ public
   procedure GetDados;
 
   function GetCds: TClientDataSet;
+  function getBancoId(nomeBanco: string): string;
 
   property codigo: integer read bCodigo write bCodigo;
   property numero: string read bNumero write bNumero;
@@ -86,6 +87,16 @@ begin
   dmBancos.Excluir;
 end;
 
+function Tbanco.getBancoId(nomeBanco: string): string;
+begin
+  Result:='';
+  dmBancos.qryAux.sql.clear;
+  dmBancos.qryAux.sql.add('select IDBANCO from bancos where nomebanco ='+QuotedStr(nomeBanco));
+  dmBancos.qryAux.Open;
+  Result:= dmBancos.qryAux.FieldByName('IDBANCO').AsString;
+  dmBancos.qryAux.Close;
+end;
+
 function Tbanco.GetCds: TClientDataSet;
 begin
   Result := nil;
@@ -99,6 +110,7 @@ begin
   bNumero := dmBancos.cdsBancoCODIGOBANCO.Text;
   bNome := dmBancos.cdsBancoNOMEBANCO.Text;
 end;
+
 
 procedure Tbanco.Incluir;
 begin

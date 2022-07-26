@@ -184,9 +184,6 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Saldo\unClasseSaldo.pas"/>
-        <DCCReference Include="Baixa\unConfirmacaoBaixa.pas">
-            <Form>frmConfirmacaoBaixa</Form>
-        </DCCReference>
         <DCCReference Include="Baixa\unBaixaView.pas">
             <Form>frmBaixa</Form>
             <FormType>dfm</FormType>
