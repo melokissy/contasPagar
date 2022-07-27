@@ -336,6 +336,18 @@ inherited frmTitulo: TfrmTitulo
         Font.Style = []
         ParentFont = False
       end
+      object lblSituacao: TLabel
+        Left = 40
+        Top = 160
+        Width = 4
+        Height = 16
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
       object edtCodigo: TSpinEdit
         Left = 40
         Top = 43

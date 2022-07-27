@@ -5,9 +5,9 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unPadrao, Data.DB, System.ImageList,
-  Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Grids, Vcl.DBGrids,unClasseTitulo,
+  Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Grids, Vcl.DBGrids,unClasseTitulo,unClasseUsuarios,
   Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Samples.Spin,System.Generics.Collections,
-  Vcl.DBCtrls,unDmCliente,unDmTitulo,unClasseCliente,unClasseBanco,unDmBanco;
+  Vcl.DBCtrls,unDmCliente,unDmTitulo,unClasseCliente,unClasseBanco,unDmBanco,unClasseBaixa;
 
 type
   TfrmTitulo = class(TfrmPadrao)
@@ -26,6 +26,7 @@ type
     dsCliente: TDataSource;
     cbxBanco: TDBLookupComboBox;
     dsBanco: TDataSource;
+    lblSituacao: TLabel;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure dsCadastroDataChange(Sender: TObject; Field: TField);
@@ -40,7 +41,9 @@ type
     { Private declarations }
     oTitulo: Ttitulo;
     oCliente : TCliente;
+    oUsuario: Tusuario;
     oBanco : TBanco;
+    oBaixa : Tbaixa;
     dmCliente : unDmCliente.TdmCliente;
     dmTitulo : unDmTitulo.TdmTitulo;
 
@@ -49,6 +52,8 @@ type
   public
     { Public declarations }
     qtdRegistros:integer;
+    dataBai: string;
+    usurioBai: string;
   end;
 
 var
@@ -152,13 +157,20 @@ procedure TfrmTitulo.limpaCampos;
 begin
   edtNumero.Text := '';
   edtValor.Text := '';
+  lblSituacao.Caption := '';
 end;
 
 procedure TfrmTitulo.mostraDados;
 var
   valor: real;
+  usuId: string;
 begin
   oTitulo.GetDados;
+
+  dataBai := oBaixa.GetDataBaixa(IntToStr(oTitulo.codigo));
+  {
+  usuId := oBaixa.GetUsuarioBaixa(IntToStr(oTitulo.codigo));
+  usuNome := oUsuario.getNomeById(StrToInt(usuId));      }
 
   valor := oTitulo.valor;
 
@@ -166,7 +178,13 @@ begin
   edtNumero.Text := IntToStr(oTitulo.numero);
   edtValor.Text := formatfloat('#.##',valor);  //valor formatado mostrando somente duas casas decimais após a virgula
   edtVencimento.Text := oTitulo.dataVencimento;
-  //edtBanco.Value := oTitulo.banco;
+
+  if oBaixa.GetBaixa(IntToStr(edtCodigo.Value)) <> 0 then
+  begin
+    lblSituacao.Caption := 'Título foi pago em '+dataBai;
+  end
+  else
+    lblSituacao.Caption := 'Título não foi pago';
 end;
 
 end.

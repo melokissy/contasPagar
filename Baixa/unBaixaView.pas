@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unPadrao, Data.DB, System.ImageList,
-  Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Grids, Vcl.DBGrids,unClasseTitulo,
+  Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Grids, Vcl.DBGrids,unClasseTitulo,unClasseUsuarios,
   Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Samples.Spin,unClasseBaixa,unClasseBanco,unClasseSaldo,
   Vcl.DBCtrls;
 
@@ -22,6 +22,8 @@ type
     lblValor: TLabel;
     cbxTitulo: TDBLookupComboBox;
     lblSaldoBanco: TLabel;
+    lblDataBaixa: TLabel;
+    lblUsuario: TLabel;
     procedure actSalvarExecute(Sender: TObject);
     procedure actFecharExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -47,6 +49,7 @@ type
     oBanco : Tbanco;
     oSaldo : Tsaldo;
     oTitulo : Ttitulo;
+    oUsuario : Tusuario;
     procedure mostraDados;
   public
     { Public declarations }
@@ -226,16 +229,23 @@ begin
 end;
 
 procedure TfrmBaixa.mostraDados;
+var
+  usuId: integer;
 begin
   oBaixa.GetDados;
 
   edtCodigo.Value := oBaixa.codigo;
+  lblDataBaixa.Caption := 'Data da baixa: '+oBaixa.dataBaixa;
+
+  usuId := oBaixa.usuario;
+  lblUsuario.Caption := 'Usuario que efetuou a baixa: '+oUsuario.getNomeById(usuId);
 
   CarregarLabelValorTit;
   CarregarLabelSaldoBanco;
 
   lblValor.Caption := 'Valor do título: R$ '+formatfloat('#.##',valorTit);
   lblSaldoBanco.Caption := 'Saldo do banco: R$ '+formatfloat('#.##',saldoBanco);
+
 end;
 
 end.

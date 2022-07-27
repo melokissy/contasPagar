@@ -33,6 +33,7 @@ public
   function GetCds: TClientDataSet;
   function getId(ulogin:string):string;
   function getNome(ulogin:string):string;
+  function getNomeById(usuId:integer):string;
   function getSenha(ulogin:string):string;
   function validador(uCPF:string):boolean;
 
@@ -126,6 +127,16 @@ begin
   dmUsuario.qryAux.sql.clear;
   dmUsuario.qryAux.sql.add('select nomeusu from usuarios where loginusu ='+QuotedStr(ulogin)
         +'order by nomeusu');
+  dmUsuario.qryAux.Open;
+  Result:= dmUsuario.qryAux.FieldByName('nomeusu').AsString;
+  dmUsuario.qryAux.Close;
+end;
+
+function Tusuario.getNomeById(usuId: integer): string;
+begin
+  Result:='';
+  dmUsuario.qryAux.sql.clear;
+  dmUsuario.qryAux.sql.add('select * from usuarios where idusu ='+IntToStr(usuId));
   dmUsuario.qryAux.Open;
   Result:= dmUsuario.qryAux.FieldByName('nomeusu').AsString;
   dmUsuario.qryAux.Close;

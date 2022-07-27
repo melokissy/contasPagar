@@ -321,6 +321,30 @@ inherited frmBaixa: TfrmBaixa
         Font.Style = []
         ParentFont = False
       end
+      object lblDataBaixa: TLabel
+        Left = 40
+        Top = 168
+        Width = 323
+        Height = 16
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object lblUsuario: TLabel
+        Left = 40
+        Top = 198
+        Width = 303
+        Height = 16
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
       object edtCodigo: TSpinEdit
         Left = 40
         Top = 51

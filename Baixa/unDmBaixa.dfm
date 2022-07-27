@@ -31,6 +31,7 @@ object dmBaixa: TdmBaixa
     Top = 72
   end
   object qryBaixa: TFDQuery
+    Active = True
     Connection = dmConexao.fdConnection
     SQL.Strings = (
       'select * from baixa order by databaixa desc')

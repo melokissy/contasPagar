@@ -27,6 +27,8 @@ public
 
   function GetCds: TClientDataSet;
   function GetBaixa(tituloId: string): integer;
+  function GetDataBaixa(tituloId: string): string;
+  function GetUsuarioBaixa(tituloId: string): string;
 
   property codigo: integer read bCodigo write bCodigo;
   property titulo: integer read bTituloId write bTituloId;
@@ -83,6 +85,26 @@ begin
   dmBaixa.qryAux.sql.add('select * from baixa where tituloid ='+QuotedStr(tituloId));
   dmBaixa.qryAux.Open;
   Result:= dmBaixa.qryAux.FieldByName('IDBAIXA').AsInteger;
+  dmBaixa.qryAux.Close;
+end;
+
+function Tbaixa.GetDataBaixa(tituloId: string): string;
+begin
+  Result:='';
+  dmBaixa.qryAux.sql.clear;
+  dmBaixa.qryAux.sql.add('select * from baixa where tituloid ='+QuotedStr(tituloId));
+  dmBaixa.qryAux.Open;
+  Result:= dmBaixa.qryAux.FieldByName('DATABAIXA').AsString;
+  dmBaixa.qryAux.Close;
+end;
+
+function Tbaixa.GetUsuarioBaixa(tituloId: string): string;
+begin
+  Result:='';
+  dmBaixa.qryAux.sql.clear;
+  dmBaixa.qryAux.sql.add('select * from baixa where tituloid ='+QuotedStr(tituloId));
+  dmBaixa.qryAux.Open;
+  Result:= dmBaixa.qryAux.FieldByName('USUARIOID').AsString;
   dmBaixa.qryAux.Close;
 end;
 
