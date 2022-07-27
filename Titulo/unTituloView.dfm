@@ -261,9 +261,9 @@ inherited frmTitulo: TfrmTitulo
       object Label2: TLabel
         Left = 40
         Top = 21
-        Width = 12
+        Width = 39
         Height = 16
-        Caption = 'ID'
+        Caption = 'C'#243'digo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -341,6 +341,7 @@ inherited frmTitulo: TfrmTitulo
         Top = 43
         Width = 81
         Height = 22
+        Enabled = False
         MaxValue = 0
         MinValue = 0
         TabOrder = 0

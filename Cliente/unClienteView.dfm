@@ -435,7 +435,7 @@ inherited frmClientes: TfrmClientes
         Top = 110
         Width = 244
         Height = 21
-        TabOrder = 1
+        TabOrder = 3
       end
       object edtCidade: TEdit
         Left = 301
@@ -443,7 +443,7 @@ inherited frmClientes: TfrmClientes
         Width = 169
         Height = 21
         Color = clAppWorkSpace
-        TabOrder = 2
+        TabOrder = 5
       end
       object edtEndereco: TEdit
         Left = 29
@@ -451,7 +451,7 @@ inherited frmClientes: TfrmClientes
         Width = 244
         Height = 21
         Color = clAppWorkSpace
-        TabOrder = 3
+        TabOrder = 6
       end
       object edtUF: TEdit
         Left = 499
@@ -459,14 +459,14 @@ inherited frmClientes: TfrmClientes
         Width = 60
         Height = 21
         Color = clAppWorkSpace
-        TabOrder = 4
+        TabOrder = 7
       end
       object edtCEP: TMaskEdit
         Left = 449
         Top = 110
         Width = 91
         Height = 21
-        TabOrder = 5
+        TabOrder = 4
         Text = ''
       end
       object edtCodigo: TSpinEdit
@@ -477,7 +477,7 @@ inherited frmClientes: TfrmClientes
         Enabled = False
         MaxValue = 0
         MinValue = 0
-        TabOrder = 6
+        TabOrder = 8
         Value = 0
       end
       object edtCPF: TMaskEdit
@@ -485,7 +485,7 @@ inherited frmClientes: TfrmClientes
         Top = 110
         Width = 121
         Height = 21
-        TabOrder = 7
+        TabOrder = 2
         Text = ''
       end
       object edtTelefone: TMaskEdit
@@ -493,7 +493,7 @@ inherited frmClientes: TfrmClientes
         Top = 46
         Width = 121
         Height = 21
-        TabOrder = 8
+        TabOrder = 1
         Text = ''
       end
     end

@@ -1,0 +1,138 @@
+unit unClasseTitulo;
+
+interface
+
+uses
+System.SysUtils, System.Classes, Vcl.Dialogs, Datasnap.DBClient, Data.DB;
+
+type Ttitulo = class
+  private
+
+  tCodigo: integer;
+  tNumero: integer;
+  tValor: double;
+  tDataVencimento: string;
+  tBancoId: integer;
+  tClienteId: integer;
+
+public
+  constructor Create;
+  destructor Destroy;
+
+  procedure Incluir;
+  procedure Alterar;
+  procedure Excluir;
+  procedure Cancelar;
+  procedure Salvar;
+  procedure GetDados;
+
+  function GetCds: TClientDataSet;
+  function getValor(numeroTit: string): string;
+  function getId(numeroTit: string): string;
+
+  property codigo: integer read tCodigo write tCodigo;
+  property numero: integer read tNumero write tNumero;
+  property valor: double read tValor write tValor;
+  property dataVencimento: string read tDataVencimento write tDataVencimento;
+  property banco: integer read tBancoId write tBancoId;
+  property cliente: integer read tClienteId write tClienteId;
+
+end;
+
+implementation
+
+{ Ttitulo }
+
+uses unDmTitulo;
+
+procedure Ttitulo.Alterar;
+begin
+  if Assigned(dmTitulo) then
+  dmTitulo.Alterar;
+end;
+
+procedure Ttitulo.Cancelar;
+begin
+  if Assigned(dmTitulo) then
+  dmTitulo.Cancelar;
+end;
+
+constructor Ttitulo.Create;
+begin
+  try
+    dmTitulo := TdmTitulo.Create(nil);
+    dmTitulo.cdsTitulo.Open;
+  except
+    showMessage('Ocorreu um erro ao tentar criar o datamodule de Usuários');
+  end;
+end;
+
+destructor Ttitulo.Destroy;
+begin
+  dmTitulo.cdsTitulo.Close;
+  FreeAndNil(dmTitulo);
+end;
+
+procedure Ttitulo.Excluir;
+begin
+  if Assigned(dmTitulo) then
+  dmTitulo.Excluir;
+end;
+
+function Ttitulo.GetCds: TClientDataSet;
+begin
+  Result := nil;
+  if Assigned(dmTitulo) then
+    Result := dmTitulo.cdsTitulo;
+end;
+
+procedure Ttitulo.GetDados;
+begin
+  tCodigo := dmTitulo.cdsTituloIDTITULO.Value;
+  tNumero := dmTitulo.cdsTituloNUMEROTITULO.Value;
+  tValor := dmTitulo.cdsTituloVALORTITULO.Value;
+  tDataVencimento := dmTitulo.cdsTituloDATAVENCIMENTO.Text;
+  tBancoId := dmTitulo.cdsTituloBANCOID.Value;
+  tClienteId := dmTitulo.cdsTituloCLIENTEID.Value;
+end;
+
+procedure Ttitulo.Incluir;
+begin
+  if Assigned(dmTitulo) then
+  dmTitulo.Incluir;
+end;
+
+procedure Ttitulo.Salvar;
+begin
+  dmTitulo.cdsTituloIDTITULO.Value := tCodigo;
+  dmTitulo.cdsTituloNUMEROTITULO.Value := tNumero;
+  dmTitulo.cdsTituloVALORTITULO.Value := tValor;
+  dmTitulo.cdsTituloDATAVENCIMENTO.Text := tDataVencimento;
+  //dmTitulo.cdsTituloBANCOID.Value := tBancoId;
+
+  if Assigned(dmTitulo) then
+    dmTitulo.Salvar;
+end;
+
+//retorna o id atraves do login
+function Ttitulo.getId(numeroTit: string): string;
+begin
+  Result:='';
+  dmTitulo.qryAux.sql.clear;
+  dmTitulo.qryAux.sql.add('select IDTITULO from titulos where numerotitulo ='+QuotedStr(numeroTit));
+  dmTitulo.qryAux.Open;
+  Result:= dmTitulo.qryAux.FieldByName('IDTITULO').AsString;
+  dmTitulo.qryAux.Close;
+end;
+
+function Ttitulo.getValor(numeroTit: string): string;
+begin
+  Result:='';
+  dmTitulo.qryAux.sql.clear;
+  dmTitulo.qryAux.sql.add('select VALORTITULO from titulos where numerotitulo ='+QuotedStr(numeroTit));
+  dmTitulo.qryAux.Open;
+  Result:= dmTitulo.qryAux.FieldByName('VALORTITULO').AsString;
+  dmTitulo.qryAux.Close;
+end;
+
+end.

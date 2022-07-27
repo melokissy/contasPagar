@@ -28,6 +28,7 @@ public
 
   function GetCds: TClientDataSet;
   function getValor(numeroTit: string): string;
+  function getId(numeroTit: string): string;
 
   property codigo: integer read tCodigo write tCodigo;
   property numero: integer read tNumero write tNumero;
@@ -113,7 +114,16 @@ begin
     dmTitulo.Salvar;
 end;
 
-//retorna o id atraves do login
+function Ttitulo.getId(numeroTit: string): string;
+begin
+  Result:='';
+  dmTitulo.qryAux.sql.clear;
+  dmTitulo.qryAux.sql.add('select IDTITULO from titulos where numerotitulo ='+QuotedStr(numeroTit));
+  dmTitulo.qryAux.Open;
+  Result:= dmTitulo.qryAux.FieldByName('IDTITULO').AsString;
+  dmTitulo.qryAux.Close;
+end;
+
 function Ttitulo.getValor(numeroTit: string): string;
 begin
   Result:='';

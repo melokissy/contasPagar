@@ -536,7 +536,7 @@ inherited frmUsuarios: TfrmUsuarios
         Text = ''
       end
       object edtCodigo: TSpinEdit
-        Left = 24
+        Left = 26
         Top = 38
         Width = 89
         Height = 22

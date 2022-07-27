@@ -261,9 +261,10 @@ inherited frmBanco: TfrmBanco
       object Label2: TLabel
         Left = 43
         Top = 24
-        Width = 12
+        Width = 39
         Height = 16
-        Caption = 'ID'
+        Caption = 'C'#243'digo'
+        Enabled = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13

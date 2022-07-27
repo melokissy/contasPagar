@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, unPadrao, Data.DB, System.ImageList,
   Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Grids, Vcl.DBGrids,
-  Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls,unClasseSaldo,unDmBanco,unDmSaldo,
+  Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls,unClasseSaldo,unDmBanco,unDmSaldo,unClasseBanco,
   Vcl.Samples.Spin, Vcl.DBCtrls;
 
 type
@@ -34,15 +34,22 @@ type
     procedure actAlterarExecute(Sender: TObject);
     procedure actExcluirExecute(Sender: TObject);
     procedure dsSaldoDataChange(Sender: TObject; Field: TField);
+    procedure CarregarSaldoInicial;
+    procedure cbxBancosClick(Sender: TObject);
+    procedure cbxBancosDropDown(Sender: TObject);
+    procedure cbxBancosExit(Sender: TObject);
   private
     { Private declarations }
     oSaldo : Tsaldo;
+    oBanco : Tbanco;
 
     procedure mostraDados;
     procedure limpaCampos;
   public
     { Public declarations }
     qtdRegistros:integer;
+    saldoBanco : double;
+    codidoBanco : string;
   end;
 
 var
@@ -51,6 +58,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses unBaixaView;
 
 procedure TfrmSaldo.actAlterarExecute(Sender: TObject);
 begin
@@ -82,15 +91,17 @@ begin
 end;
 
 procedure TfrmSaldo.actIncluirExecute(Sender: TObject);
+var
+  nomeBanco : string;
 begin
   inherited;
   limpaCampos;
+
   oSaldo.Incluir;
 end;
 
 procedure TfrmSaldo.actSalvarExecute(Sender: TObject);
 begin
-  inherited;
   oSaldo.codigo := qtdRegistros+1;
   oSaldo.entrada := StrToFloat(edtEntrada.Text);
   osaldo.saida := StrToFloat(edtSaida.Text);
@@ -98,6 +109,46 @@ begin
   osaldo.saldoFinal := StrToFloat(edtSaldoInicial.Text) + (StrToFloat(edtEntrada.Text) - StrToFloat(edtSaida.Text));
 
   oSaldo.Salvar;
+  actCancelarExecute(sender);
+end;
+
+procedure TfrmSaldo.CarregarSaldoInicial;
+var
+  nomeBanco : string;
+  saldo : string;
+begin
+  inherited;
+  nomeBanco := cbxBancos.ListSource.DataSet.FieldByName(cbxBancos.ListField).Value;
+  codidoBanco := oBanco.getBancoId(nomeBanco);
+  saldo := oSaldo.getSaldo(codidoBanco);
+
+  if saldo <> '' then
+  begin
+    saldoBanco := StrToFloat(saldo);
+    edtSaldoInicial.Text := formatfloat('#.##',saldoBanco);
+    exit;
+  end
+  else
+  begin
+    edtSaldoInicial.Text := '0';
+    edtSaldoInicial.Enabled := true;
+  end;
+
+end;
+
+procedure TfrmSaldo.cbxBancosClick(Sender: TObject);
+begin
+  CarregarSaldoInicial;
+end;
+
+procedure TfrmSaldo.cbxBancosDropDown(Sender: TObject);
+begin
+  CarregarSaldoInicial;
+end;
+
+procedure TfrmSaldo.cbxBancosExit(Sender: TObject);
+begin
+  CarregarSaldoInicial;
 end;
 
 procedure TfrmSaldo.dsSaldoDataChange(Sender: TObject; Field: TField);

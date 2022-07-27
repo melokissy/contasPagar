@@ -98,27 +98,43 @@ procedure TfrmBaixa.actIncluirExecute(Sender: TObject);
 begin
   inherited;
   oBaixa.Incluir;
+
+  lblValor.Caption := '';
+  lblSaldoBanco.Caption := '';
 end;
 
 procedure TfrmBaixa.actSalvarExecute(Sender: TObject);
 var
   nomeBanco : string;
+  tituloId : string;
 begin
   nomeBanco := cbxBanco.ListSource.DataSet.FieldByName(cbxBanco.ListField).Value;
   codidoBanco := oBanco.getBancoId(nomeBanco);
   saldoBanco := StrToFloat(oSaldo.getSaldo(codidoBanco));
 
+  tituloId := oTitulo.getId(cbxTitulo.ListSource.DataSet.FieldByName(cbxTitulo.ListField).Value);
+
   if saldoBanco > valorTit then
   begin
-    oBaixa.codigo := qtdRegistros+1;
-    oBaixa.Salvar;
-    oSaldo.descontaSaldo(codidoBanco,valorTit);
+    if oBaixa.GetBaixa(tituloId) = 0 then
+    begin
+      oBaixa.codigo := qtdRegistros+1;
+      oBaixa.Salvar;
+      oSaldo.descontaSaldo(codidoBanco,valorTit);
+      PageControl1.ActivePage:=tsConsulta;
+    end
+    else
+    begin
+      ShowMessage('O título já foi pago');
+      actCancelarExecute(sender);
+    end;
   end
   else
   begin
     ShowMessage('O banco selecionado não possui saldo suficiente');
     actCancelarExecute(Sender);
   end;
+    actCancelarExecute(sender);
 end;
 
 procedure TfrmBaixa.CarregarLabelSaldoBanco;
@@ -149,7 +165,6 @@ begin
   numeroTit := cbxTitulo.ListSource.DataSet.FieldByName(cbxTitulo.ListField).Value;
   valorTit := StrToFloat(oTitulo.getValor(numeroTit));
   lblValor.Caption := 'Valor do título: R$ '+formatfloat('#.##',valorTit);
-
 end;
 
 procedure TfrmBaixa.cbxBancoClick(Sender: TObject);
@@ -215,6 +230,12 @@ begin
   oBaixa.GetDados;
 
   edtCodigo.Value := oBaixa.codigo;
+
+  CarregarLabelValorTit;
+  CarregarLabelSaldoBanco;
+
+  lblValor.Caption := 'Valor do título: R$ '+formatfloat('#.##',valorTit);
+  lblSaldoBanco.Caption := 'Saldo do banco: R$ '+formatfloat('#.##',saldoBanco);
 end;
 
 end.

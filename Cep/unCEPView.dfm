@@ -261,9 +261,9 @@ inherited frmCEP: TfrmCEP
       object Label2: TLabel
         Left = 35
         Top = 18
-        Width = 12
+        Width = 39
         Height = 16
-        Caption = 'ID'
+        Caption = 'C'#243'digo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -298,7 +298,7 @@ inherited frmCEP: TfrmCEP
         ParentFont = False
       end
       object Label4: TLabel
-        Left = 576
+        Left = 568
         Top = 82
         Width = 15
         Height = 16
@@ -379,9 +379,10 @@ inherited frmCEP: TfrmCEP
         Top = 40
         Width = 78
         Height = 22
+        Enabled = False
         MaxValue = 0
         MinValue = 0
-        TabOrder = 0
+        TabOrder = 4
         Value = 0
       end
       object edtLogradouro: TEdit
@@ -394,12 +395,12 @@ inherited frmCEP: TfrmCEP
       object edtCidade: TEdit
         Left = 346
         Top = 104
-        Width = 207
+        Width = 199
         Height = 21
         TabOrder = 2
       end
       object edtUF: TEdit
-        Left = 576
+        Left = 568
         Top = 104
         Width = 52
         Height = 21
@@ -410,7 +411,7 @@ inherited frmCEP: TfrmCEP
         Top = 40
         Width = 132
         Height = 21
-        TabOrder = 4
+        TabOrder = 0
       end
     end
   end

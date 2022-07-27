@@ -27,10 +27,10 @@ public
   procedure GetDados;
 
   procedure descontaSaldo(bancoId: string; valorTit: double);
- // procedure somaSaldo(bancoId: string; valorTit: double);
 
   function GetCds: TClientDataSet;
   function getSaldo(bancoId: string): string;
+  function getUltimoCodigo: integer;
 
   property codigo: integer read sCodigo write sCodigo;
   property saldoInicial: double read sSaldoInicial write sSaldoInicial;
@@ -58,13 +58,16 @@ procedure Tsaldo.descontaSaldo(bancoId: string; valorTit: double);
 var
   saldoAtualizado: double;
   saldoIni : double;
+  ultimoCodigo : integer;
 begin
+  ultimoCodigo := getUltimoCodigo;
+
   saldoIni := StrToFloat(getSaldo(bancoId));
   saldoAtualizado := saldoIni - valorTit;
 
   dmSaldo.Incluir;
 
-  dmSaldo.cdsSaldoIDSALDO.Value := 10;
+  dmSaldo.cdsSaldoIDSALDO.Value := ultimoCodigo+1;
   dmSaldo.cdsSaldoSALDOINICIAL.Value := saldoIni;
   dmSaldo.cdsSaldoBANCOID.Value := StrToInt(bancoId);
   dmSaldo.cdsSaldoSALDOFINAL.Value := saldoAtualizado;
@@ -127,9 +130,19 @@ function Tsaldo.getSaldo(bancoId: string): string;
 begin
   Result:='';
   dmSaldo.qryAux.sql.clear;
-  dmSaldo.qryAux.sql.add('select SALDOFINAL from saldo where idsaldo = (select max(idsaldo) from saldo) and bancoid='+QuotedStr(bancoId));
+  dmSaldo.qryAux.sql.add('select SALDOFINAL from saldo where idsaldo = (select max(idsaldo) from saldo where bancoid='+QuotedStr(bancoId)+')');
   dmSaldo.qryAux.Open;
   Result:= dmSaldo.qryAux.FieldByName('SALDOFINAL').AsString;
+  dmSaldo.qryAux.Close;
+end;
+
+function Tsaldo.getUltimoCodigo: integer;
+begin
+  Result:=0;
+  dmSaldo.qryAux.sql.clear;
+  dmSaldo.qryAux.sql.add('select MAX(IDSALDO) as codigo from saldo');
+  dmSaldo.qryAux.Open;
+  Result:= dmSaldo.qryAux.FieldByName('codigo').AsInteger;
   dmSaldo.qryAux.Close;
 end;
 
